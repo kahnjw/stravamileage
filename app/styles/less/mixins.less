@@ -1,0 +1,32 @@
+.clearafter {
+  &:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+  }
+}
+
+
+.clearbefore {
+  &:before {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+  }
+}
+
+.clearboth {
+  .clearbefore;
+  .clearafter;
+}
+
+.circle-background {
+  border-radius: 50%;
+  background-color: @orange;
+}
