@@ -19,6 +19,12 @@ $ bower install
 ## Test It
 
 ```
+$ grunt test
+```
+
+Or if you prefer to use an in browser test runner do:
+
+```
 $ testem
 ```
 
