@@ -33,3 +33,9 @@ $ testem
 ```
 $ grunt
 ```
+
+## Run It
+
+```
+$ grunt connect
+```
