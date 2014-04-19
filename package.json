@@ -1,0 +1,25 @@
+{
+  "name": "stravamileage",
+  "private": false,
+  "version": "0.0.1",
+  "dependencies": {
+    "less": "1.4.1"
+  },
+  "devDependencies": {
+    "bower": "1.2.x",
+    "grunt": "0.4.x",
+    "grunt-cli": "0.1.x",
+    "grunt-contrib-handlebars": "0.6.x",
+    "grunt-contrib-jasmine": "0.5.x",
+    "grunt-contrib-jshint": "0.7.x",
+    "grunt-contrib-less": "0.7.x",
+    "grunt-contrib-requirejs": "0.4.x",
+    "grunt-contrib-testem": "0.5.x",
+    "grunt-contrib-watch": "0.5.x",
+    "grunt-env": "0.4.x",
+    "load-grunt-tasks": "0.2.x",
+    "testem": "0.5.x",
+    "handlebars-xgettext": "1.0.x",
+    "grunt-contrib-connect": "~0.7.1"
+  }
+}

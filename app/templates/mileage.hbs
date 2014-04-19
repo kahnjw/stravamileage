@@ -1,0 +1,15 @@
+<ul class="mileage-list">
+  {{#each mileages}}
+    <li class="gear {{id}}">
+      <h2>{{custom_name}}</h2>
+      <div class="gear-specs">
+        <span class="gear-type">Type: {{gear_name}}</span>
+        <span class="gear-manu">Manufacturer: {{manufacturer}}</span>
+      </div>
+      <div class="chart">
+        <span class="chart-text">{{mileage}} of {{lifetime}} miles</span>
+        <div class="bar"></span>
+      </div>
+    </li>
+  {{/each}}
+</ul>
