@@ -19084,7 +19084,120 @@ define('views/authenticate',['require','exports','module','backbone','templates/
   return Authenticate;
 });
 
-define('router',['require','exports','module','backbone','views/page','views/mileage','views/profile','views/more','views/authenticate'],function(require, exports, module){
+define('global-events',['require','exports','module','backbone','lodash'],function(require, exports, module) {
+  
+
+  var Backbone = require("backbone");
+  var _ = require("lodash");
+
+  var globalEvents = {};
+
+  return _.extend(globalEvents, Backbone.Events);
+});
+
+define('models/session',['require','exports','module','backbone','lodash','global-events'],function(require, exports, module){
+  
+
+  var Backbone = require('backbone');
+  var _ = require('lodash');
+  var globalEvents = require('global-events');
+
+  var Session = Backbone.Model.extend({
+    url: '/api/v1/auth/',
+
+    initialize: function(options) {
+      _.extend(this, options);
+      this.on('sync', this.complete);
+      this.on('error', this.serverError);
+    },
+
+    complete: function() {
+      globalEvents.trigger('sessionCreated');
+    },
+
+    serverError: function(session, xhr) {
+      var errors = {};
+
+      if(xhr.status === 403) {
+        errors.notAuthorized = 'Email/Password mismatch';
+      }
+
+      _.extend(errors, xhr.responseJSON);
+
+      this.trigger('invalid', errors);
+    }
+  });
+
+  return new Session();
+});
+
+define('templates/login',['handlebars'], function(Handlebars) {
+
+return Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+  this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
+  
+
+
+  return "<div class=\"login\">\n  <form>\n    <h1>Login to Mileage</h1>\n    <label for=\"username\" class=\"control-label\">Username</label>\n    <input type=\"text\" name=\"username\">\n    <label for=\"password\" class=\"control-label\">Password</label>\n    <input type=\"password\" name=\"password\">\n    <button type=\"submit\">Login</button>\n  </form>\n</div>\n";
+  })
+
+});
+define('helpers/serialize-form',['require','exports','module','jquery','lodash'],function(require, exports, module) {
+  
+
+  var $ = require('jquery');
+  var _ = require('lodash');
+
+  var serializeForm = function(form) {
+    var $form = $(form);
+    var fields = {};
+
+    _.each($form.serializeArray(), function(item) {
+      fields[item.name] = item.value;
+    });
+
+    return fields;
+  };
+
+  return serializeForm;
+});
+
+define('views/login',['require','exports','module','backbone','models/session','templates/login','helpers/serialize-form','jquery','lodash'],function(require, exports, module) {
+  
+
+  var Backbone = require('backbone');
+  var session = require('models/session');
+  var loginTemplate = require('templates/login');
+  var serializeForm = require('helpers/serialize-form');
+  var $ = require('jquery');
+  var _ = require('lodash');
+
+  var Login = Backbone.View.extend({
+    template: loginTemplate,
+    events: {
+      'submit': 'login'
+    },
+
+    initialize: function() {
+      this.session = session;
+    },
+
+    render: function() {
+      this.$el.html(this.template());
+    },
+
+    login: function(event) {
+      event.preventDefault();
+      var data = serializeForm(event.target);
+      this.session.save(data);
+    }
+  });
+
+  return Login;
+});
+
+define('router',['require','exports','module','backbone','views/page','views/mileage','views/profile','views/more','views/authenticate','views/login'],function(require, exports, module){
   
 
   var Backbone = require('backbone');
@@ -19093,11 +19206,13 @@ define('router',['require','exports','module','backbone','views/page','views/mil
   var Profile = require('views/profile');
   var More = require('views/more');
   var Authenticate = require('views/authenticate');
+  var Login = require('views/login');
 
   var Router = Backbone.Router.extend({
     routes: {
       '(/)': 'root',
       '(/)authenticate(/)': 'authenticate',
+      '(/)login(/)': 'login',
       '(/)mileage(/)': 'mileage',
       '(/)profile(/)': 'profile',
       '(/)gear(/)': 'gear',
@@ -19112,6 +19227,7 @@ define('router',['require','exports','module','backbone','views/page','views/mil
       this.profile = new Profile();
       this.more = new More();
       this.authenticate = new Authenticate();
+      this.login = new Login();
     },
 
     root: function() {
@@ -19120,6 +19236,10 @@ define('router',['require','exports','module','backbone','views/page','views/mil
 
     authenticate: function() {
       this.setup('authenticate', true);
+    },
+
+    login: function() {
+      this.setup('login', true);
     },
 
     mileage: function() {

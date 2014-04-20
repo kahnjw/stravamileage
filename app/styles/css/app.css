@@ -264,26 +264,43 @@ header nav:after {
   margin-right: 1em;
 }
 /* line 178, /Users/kahnjw/Documents/strava_mileage/app/styles/less/screen.less */
-.connect {
+.connect,
+.login {
   padding: 2em 0;
   color: #888;
   font-size: 12px;
 }
 /* line 183, /Users/kahnjw/Documents/strava_mileage/app/styles/less/screen.less */
-.connect h1 {
+.connect h1,
+.login h1 {
   color: #aaa;
   font-size: 18px;
 }
 /* line 188, /Users/kahnjw/Documents/strava_mileage/app/styles/less/screen.less */
 .connect h1,
-.connect p {
+.login h1,
+.connect p,
+.login p {
   text-align: center;
 }
 /* line 192, /Users/kahnjw/Documents/strava_mileage/app/styles/less/screen.less */
-.connect img {
+.connect img,
+.login img {
   display: block;
   margin: 0 auto;
   padding: 2em 0 1em 0;
+}
+/* line 199, /Users/kahnjw/Documents/strava_mileage/app/styles/less/screen.less */
+.login {
+  width: 70%;
+  margin: 0 auto;
+}
+/* line 203, /Users/kahnjw/Documents/strava_mileage/app/styles/less/screen.less */
+.login input[type=text],
+.login input[type=password] {
+  margin: 1em auto;
+  display: block;
+  width: 93%;
 }
 /* line 1, /Users/kahnjw/Documents/strava_mileage/app/styles/less/fonts.less */
 body {
@@ -308,4 +325,20 @@ h3 {
   font-weight: 200;
   margin: 0;
   padding: 0;
+}
+/* line 1, /Users/kahnjw/Documents/strava_mileage/app/styles/less/forms.less */
+input,
+button {
+  background: #eee;
+  color: #333;
+  padding: 1em;
+  border-radius: 0.7em;
+  border: 3px #888 solid;
+  font-size: 14px;
+}
+/* line 10, /Users/kahnjw/Documents/strava_mileage/app/styles/less/forms.less */
+input:focus,
+button:focus {
+  outline: none;
+  border-color: #f73308;
 }

@@ -7,11 +7,13 @@ define(function(require, exports, module){
   var Profile = require('views/profile');
   var More = require('views/more');
   var Authenticate = require('views/authenticate');
+  var Login = require('views/login');
 
   var Router = Backbone.Router.extend({
     routes: {
       '(/)': 'root',
       '(/)authenticate(/)': 'authenticate',
+      '(/)login(/)': 'login',
       '(/)mileage(/)': 'mileage',
       '(/)profile(/)': 'profile',
       '(/)gear(/)': 'gear',
@@ -26,6 +28,7 @@ define(function(require, exports, module){
       this.profile = new Profile();
       this.more = new More();
       this.authenticate = new Authenticate();
+      this.login = new Login();
     },
 
     root: function() {
@@ -34,6 +37,10 @@ define(function(require, exports, module){
 
     authenticate: function() {
       this.setup('authenticate', true);
+    },
+
+    login: function() {
+      this.setup('login', true);
     },
 
     mileage: function() {
