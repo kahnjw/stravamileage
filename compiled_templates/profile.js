@@ -22,7 +22,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   if (stack1 = helpers.last_name) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
   else { stack1 = (depth0 && depth0.last_name); stack1 = typeof stack1 === functionType ? stack1.call(depth0, {hash:{},data:data}) : stack1; }
   buffer += escapeExpression(stack1)
-    + "</span>\n  </div>\n  <a href=\"#logout\" class=\"logout\">\n    <i class=\"fa fa-sign-out\"></i>\n  </a>\n</div>";
+    + "</span>\n  </div>\n  <div class=\"controls\">\n    <a href=\"#profile/edit\" class=\"edit\">\n      <i class=\"fa fa-pencil-square-o\"></i>\n      Edit\n    </a>\n    <a href=\"#logout\" class=\"logout\">\n      <i class=\"fa fa-sign-out\"></i>\n      Logout\n    </a>\n  </div>\n</div>";
   return buffer;
   })
 

@@ -1,9 +1,9 @@
 define(function(require, exports, module) {
-  "use strict";
+  'use strict';
 
-  var Backbone = require("backbone");
-  var userMenuTemplate = require("templates/user-menu");
-  var _ = require("lodash");
+  var Backbone = require('backbone');
+  var userMenuTemplate = require('templates/user-menu');
+  var _ = require('lodash');
 
   var UserMenu = Backbone.View.extend({
     template: userMenuTemplate,

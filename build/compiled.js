@@ -18748,9 +18748,9 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
 define('views/user-menu',['require','exports','module','backbone','templates/user-menu','lodash'],function(require, exports, module) {
   
 
-  var Backbone = require("backbone");
-  var userMenuTemplate = require("templates/user-menu");
-  var _ = require("lodash");
+  var Backbone = require('backbone');
+  var userMenuTemplate = require('templates/user-menu');
+  var _ = require('lodash');
 
   var UserMenu = Backbone.View.extend({
     template: userMenuTemplate,
@@ -18771,9 +18771,9 @@ define('views/user-menu',['require','exports','module','backbone','templates/use
 define('views/page',['require','exports','module','backbone','jquery','templates/page','views/user-menu'],function(require, exports, module) {
   
 
-  var Backbone = require("backbone");
+  var Backbone = require('backbone');
   var $ = require('jquery');
-  var pageTemplate = require("templates/page");
+  var pageTemplate = require('templates/page');
   var UserMenu = require('views/user-menu');
 
   var Page = Backbone.View.extend({
@@ -18793,6 +18793,14 @@ define('views/page',['require','exports','module','backbone','jquery','templates
     swapFrontBack: function() {
       this.$el.find('.fade-page').toggleClass('front back');
       this.$el.find('.back').empty();
+    },
+
+    hideMenu: function() {
+      this.userMenu.$el.hide();
+    },
+
+    showMenu: function() {
+      this.userMenu.$el.show();
     }
   });
 
@@ -18821,11 +18829,13 @@ function program1(depth0,data) {
   if (stack1 = helpers.gear_name) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
   else { stack1 = (depth0 && depth0.gear_name); stack1 = typeof stack1 === functionType ? stack1.call(depth0, {hash:{},data:data}) : stack1; }
   buffer += escapeExpression(stack1)
-    + "</span>\n        <span class=\"gear-manu\">Manufacturer: ";
-  if (stack1 = helpers.manufacturer) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
-  else { stack1 = (depth0 && depth0.manufacturer); stack1 = typeof stack1 === functionType ? stack1.call(depth0, {hash:{},data:data}) : stack1; }
-  buffer += escapeExpression(stack1)
-    + "</span>\n      </div>\n      <div class=\"chart\">\n        <span class=\"chart-text\">";
+    + "</span>\n        ";
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.manufacturer), {hash:{},inverse:self.noop,fn:self.program(2, program2, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n        ";
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.shop), {hash:{},inverse:self.noop,fn:self.program(4, program4, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n      </div>\n      <div class=\"chart\">\n        <span class=\"chart-text\">";
   if (stack1 = helpers.mileage) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
   else { stack1 = (depth0 && depth0.mileage); stack1 = typeof stack1 === functionType ? stack1.call(depth0, {hash:{},data:data}) : stack1; }
   buffer += escapeExpression(stack1)
@@ -18833,8 +18843,46 @@ function program1(depth0,data) {
   if (stack1 = helpers.lifetime) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
   else { stack1 = (depth0 && depth0.lifetime); stack1 = typeof stack1 === functionType ? stack1.call(depth0, {hash:{},data:data}) : stack1; }
   buffer += escapeExpression(stack1)
-    + " miles</span>\n        <div class=\"bar\"></span>\n      </div>\n    </li>\n  ";
+    + " miles</span>\n        <div class=\"bar\">\n          ";
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.over), {hash:{},inverse:self.noop,fn:self.program(6, program6, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n        </div>\n      </div>\n      <a href=\"#gear/";
+  if (stack1 = helpers.id) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
+  else { stack1 = (depth0 && depth0.id); stack1 = typeof stack1 === functionType ? stack1.call(depth0, {hash:{},data:data}) : stack1; }
+  buffer += escapeExpression(stack1)
+    + "/edit\" class=\"edit\">\n        <i class=\"fa fa-pencil-square-o\"></i>\n        Edit\n      </a>\n      <a href=\"#gear/";
+  if (stack1 = helpers.id) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
+  else { stack1 = (depth0 && depth0.id); stack1 = typeof stack1 === functionType ? stack1.call(depth0, {hash:{},data:data}) : stack1; }
+  buffer += escapeExpression(stack1)
+    + "/delete\" class=\"delete\">\n        <i class=\"fa fa-trash-o\"></i>\n        Delete\n      </a>\n    </li>\n  ";
   return buffer;
+  }
+function program2(depth0,data) {
+  
+  var buffer = "", stack1;
+  buffer += "\n          <span class=\"gear-manu\">Manufacturer: ";
+  if (stack1 = helpers.manufacturer) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
+  else { stack1 = (depth0 && depth0.manufacturer); stack1 = typeof stack1 === functionType ? stack1.call(depth0, {hash:{},data:data}) : stack1; }
+  buffer += escapeExpression(stack1)
+    + "</span>\n        ";
+  return buffer;
+  }
+
+function program4(depth0,data) {
+  
+  var buffer = "", stack1;
+  buffer += "\n          <span class=\"gear-shop\">Shop: ";
+  if (stack1 = helpers.shop) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
+  else { stack1 = (depth0 && depth0.shop); stack1 = typeof stack1 === functionType ? stack1.call(depth0, {hash:{},data:data}) : stack1; }
+  buffer += escapeExpression(stack1)
+    + "</span>\n        ";
+  return buffer;
+  }
+
+function program6(depth0,data) {
+  
+  
+  return "\n            <i class=\"fa fa-exclamation-triangle\"></i>\n          ";
   }
 
   buffer += "<ul class=\"mileage-list\">\n  ";
@@ -18875,9 +18923,7 @@ define('views/mileage',['require','exports','module','backbone','templates/milea
 
     render: function() {
       this.listenTo(this.collection, 'add', _.bind(this.insertView, this));
-      this.listenTo(this.collection, 'add', _.bind(this.drawGraphs, this));
       this.insertView();
-      this.drawGraphs();
     },
 
     insertView: function() {
@@ -18886,6 +18932,7 @@ define('views/mileage',['require','exports','module','backbone','templates/milea
       };
 
       this.$el.html(this.template(data));
+      this.drawGraphs();
     },
 
     modelToJson: function(model) {
@@ -18896,6 +18943,11 @@ define('views/mileage',['require','exports','module','backbone','templates/milea
       _.each(this.collection.models, function(model) {
         var percent = model.attributes.mileage / model.attributes.lifetime;
         var $item = $('.' + model.attributes.id);
+
+        if(percent > 1) {
+          model.attributes.over = true;
+          percent = 1;
+        }
         $item.find('.bar').width((percent * 100 + '%'));
       });
     }
@@ -18928,7 +18980,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   if (stack1 = helpers.last_name) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
   else { stack1 = (depth0 && depth0.last_name); stack1 = typeof stack1 === functionType ? stack1.call(depth0, {hash:{},data:data}) : stack1; }
   buffer += escapeExpression(stack1)
-    + "</span>\n  </div>\n  <a href=\"#logout\" class=\"logout\">\n    <i class=\"fa fa-sign-out\"></i>\n  </a>\n</div>";
+    + "</span>\n  </div>\n  <div class=\"controls\">\n    <a href=\"#profile/edit\" class=\"edit\">\n      <i class=\"fa fa-pencil-square-o\"></i>\n      Edit\n    </a>\n    <a href=\"#logout\" class=\"logout\">\n      <i class=\"fa fa-sign-out\"></i>\n      Logout\n    </a>\n  </div>\n</div>";
   return buffer;
   })
 
@@ -19003,7 +19055,36 @@ define('views/more',['require','exports','module','backbone','templates/more'],f
   return More;
 });
 
-define('router',['require','exports','module','backbone','views/page','views/mileage','views/profile','views/more'],function(require, exports, module){
+define('templates/authenticate',['handlebars'], function(Handlebars) {
+
+return Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+  this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
+  
+
+
+  return "<div class=\"connect\">\n  <h1>\n    We need access to your strava account to get your mileage\n  </h1>\n  <a href=\"https://www.strava.com/oauth/authorize?client_id=1356&response_type=code&redirect_uri=http://localhost:9000/#approve&approval_prompt=force\">\n    <img src=\"images/ConnectWithStrava@2x.png\" alt=\"Connect With Strava\">\n  </a>\n  <p>\n    We won't be sharing your information with anyone.\n  </p>\n</div>";
+  })
+
+});
+define('views/authenticate',['require','exports','module','backbone','templates/authenticate'],function(require, exports, module) {
+  
+
+  var Backbone = require('backbone');
+  var authenticateTemplate = require('templates/authenticate');
+
+  var Authenticate = Backbone.View.extend({
+    template: authenticateTemplate,
+
+    render: function() {
+      this.$el.html(this.template());
+    }
+  });
+
+  return Authenticate;
+});
+
+define('router',['require','exports','module','backbone','views/page','views/mileage','views/profile','views/more','views/authenticate'],function(require, exports, module){
   
 
   var Backbone = require('backbone');
@@ -19011,10 +19092,12 @@ define('router',['require','exports','module','backbone','views/page','views/mil
   var Mileage = require('views/mileage');
   var Profile = require('views/profile');
   var More = require('views/more');
+  var Authenticate = require('views/authenticate');
 
   var Router = Backbone.Router.extend({
     routes: {
       '(/)': 'root',
+      '(/)authenticate(/)': 'authenticate',
       '(/)mileage(/)': 'mileage',
       '(/)profile(/)': 'profile',
       '(/)gear(/)': 'gear',
@@ -19028,10 +19111,15 @@ define('router',['require','exports','module','backbone','views/page','views/mil
       this.mileage = new Mileage();
       this.profile = new Profile();
       this.more = new More();
+      this.authenticate = new Authenticate();
     },
 
     root: function() {
       this.navigate('mileage', true);
+    },
+
+    authenticate: function() {
+      this.setup('authenticate', true);
     },
 
     mileage: function() {
@@ -19051,7 +19139,12 @@ define('router',['require','exports','module','backbone','views/page','views/mil
       this.setup('more');
     },
 
-    setup: function(viewName) {
+    setup: function(viewName, hideMenu) {
+      if(hideMenu) {
+        this.page.hideMenu();
+      } else {
+        this.page.showMenu();
+      }
       this.page.updateMenu(viewName);
       this[viewName].setElement('.back');
       this[viewName].render();
@@ -19062,6 +19155,7 @@ define('router',['require','exports','module','backbone','views/page','views/mil
 
   return Router;
 });
+
 require.config({
   map: {
     "*":{

@@ -58,10 +58,6 @@ header {
       display: inline-block;
     }
 
-    .active {
-      color: @orange;
-    }
-
     .clearboth;
   }
 }
@@ -76,6 +72,7 @@ header {
 
   .gear-specs {
     float: right;
+    .clearboth;
 
     span {
       font-size: 12px;
@@ -93,6 +90,7 @@ header {
       background: #666;
       border: 3px solid #888;
       height: @chart-height;
+      border-radius: 2em;
     }
 
     .chart-text {
@@ -104,6 +102,19 @@ header {
       background: @orange;
       height: @chart-height;
       display: block;
+      min-width: 3em;
+      border-radius: 2em;
+
+      i {
+        float: right;
+        padding: 0.5em;
+        font-size: 24px;
+      }
+    }
+
+    .delete, .edit {
+      padding: 1em 1em 0 0;
+      display: inline-block;
     }
   }
 }
@@ -120,6 +131,17 @@ header {
     font-size: 40px;
   }
 
+  .controls {
+    float: left;
+    color: #888;
+    font-size: 20px;
+    padding: 3.5em 0.5em;
+    text-align: center;
+    a {padding: 0 0.6em}
+
+    i {display: inline-block;}
+  }
+
   .picture {
     float: left;
     display: inline-block;
@@ -127,13 +149,6 @@ header {
     margin: 1.5em;
     width: 8em;
     height: auto;
-  }
-
-  .logout {
-    color: #888;
-    font-size: 30px;
-    float: right;
-    padding: 2.3em;
   }
 
   .logout:hover {
@@ -157,5 +172,26 @@ header {
 
   i {
     margin-right: 1em;
+  }
+}
+
+.connect {
+  padding: 2em 0;
+  color: #888;
+  font-size: 12px;
+
+  h1 {
+    color: #aaa;
+    font-size: 18px;
+  }
+
+  h1, p {
+    text-align: center;
+  }
+
+  img {
+    display: block;
+    margin: 0 auto;
+    padding: 2em 0 1em 0;
   }
 }

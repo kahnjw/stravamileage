@@ -20,6 +20,7 @@
     "load-grunt-tasks": "0.2.x",
     "testem": "0.5.x",
     "handlebars-xgettext": "1.0.x",
-    "grunt-contrib-connect": "~0.7.1"
+    "grunt-contrib-connect": "0.7.x",
+    "grunt-connect-proxy": "0.1.x"
   }
 }

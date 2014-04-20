@@ -17,9 +17,7 @@ define(function(require, exports, module) {
 
     render: function() {
       this.listenTo(this.collection, 'add', _.bind(this.insertView, this));
-      this.listenTo(this.collection, 'add', _.bind(this.drawGraphs, this));
       this.insertView();
-      this.drawGraphs();
     },
 
     insertView: function() {
@@ -28,6 +26,7 @@ define(function(require, exports, module) {
       };
 
       this.$el.html(this.template(data));
+      this.drawGraphs();
     },
 
     modelToJson: function(model) {
@@ -38,6 +37,11 @@ define(function(require, exports, module) {
       _.each(this.collection.models, function(model) {
         var percent = model.attributes.mileage / model.attributes.lifetime;
         var $item = $('.' + model.attributes.id);
+
+        if(percent > 1) {
+          model.attributes.over = true;
+          percent = 1;
+        }
         $item.find('.bar').width((percent * 100 + '%'));
       });
     }

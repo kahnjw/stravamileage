@@ -6,10 +6,12 @@ define(function(require, exports, module){
   var Mileage = require('views/mileage');
   var Profile = require('views/profile');
   var More = require('views/more');
+  var Authenticate = require('views/authenticate');
 
   var Router = Backbone.Router.extend({
     routes: {
       '(/)': 'root',
+      '(/)authenticate(/)': 'authenticate',
       '(/)mileage(/)': 'mileage',
       '(/)profile(/)': 'profile',
       '(/)gear(/)': 'gear',
@@ -23,10 +25,15 @@ define(function(require, exports, module){
       this.mileage = new Mileage();
       this.profile = new Profile();
       this.more = new More();
+      this.authenticate = new Authenticate();
     },
 
     root: function() {
       this.navigate('mileage', true);
+    },
+
+    authenticate: function() {
+      this.setup('authenticate', true);
     },
 
     mileage: function() {
@@ -46,7 +53,12 @@ define(function(require, exports, module){
       this.setup('more');
     },
 
-    setup: function(viewName) {
+    setup: function(viewName, hideMenu) {
+      if(hideMenu) {
+        this.page.hideMenu();
+      } else {
+        this.page.showMenu();
+      }
       this.page.updateMenu(viewName);
       this[viewName].setElement('.back');
       this[viewName].render();
