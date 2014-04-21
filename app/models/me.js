@@ -3,9 +3,9 @@ define(function(require, exports, module){
 
   var Backbone = require('backbone');
 
-  var Account = Backbone.Model.extend({
-    url: 'api/v1/me/'
+  var Me = Backbone.Model.extend({
+    url: '/api/v1/users/me/',
   });
 
-  return Account;
+  return Me;
 });

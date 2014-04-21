@@ -8,20 +8,29 @@ define(function(require, exports, module){
   var More = require('views/more');
   var Authenticate = require('views/authenticate');
   var Login = require('views/login');
+  var Signup = require('views/signup');
+  var Gear = require('views/gear');
+  var globalEvents = require('global-events');
+  var csrf = require('helpers/csrf');
 
   var Router = Backbone.Router.extend({
     routes: {
       '(/)': 'root',
       '(/)authenticate(/)': 'authenticate',
       '(/)login(/)': 'login',
+      '(/)signup(/)': 'signup',
       '(/)mileage(/)': 'mileage',
       '(/)profile(/)': 'profile',
       '(/)gear(/)': 'gear',
       '(/)more(/)': 'more'
     },
 
-    initialize: function() {
-      this.page = new Page({el: 'body'});
+    initialize: function(options) {
+      if(options && options.el) {
+        this.page = new Page({el: options.el});
+      } else {
+        this.page = new Page({el: 'body'});
+      }
       this.page.render();
 
       this.mileage = new Mileage();
@@ -29,6 +38,12 @@ define(function(require, exports, module){
       this.more = new More();
       this.authenticate = new Authenticate();
       this.login = new Login();
+      this.signup = new Signup();
+      this.gear = new Gear();
+
+      this.wireRoutingEvents();
+
+      csrf.setCsrfToken();
     },
 
     root: function() {
@@ -43,6 +58,10 @@ define(function(require, exports, module){
       this.setup('login', true);
     },
 
+    signup: function() {
+      this.setup('signup', true);
+    },
+
     mileage: function() {
       this.setup('mileage');
     },
@@ -52,8 +71,7 @@ define(function(require, exports, module){
     },
 
     gear: function() {
-      this.page.updateMenu('gear');
-      this.page.swapFrontBack();
+      this.setup('gear');
     },
 
     more: function() {
@@ -70,6 +88,15 @@ define(function(require, exports, module){
       this[viewName].setElement('.back');
       this[viewName].render();
       this.page.swapFrontBack();
+    },
+
+    enter: function() {
+      this.navigate('mileage', true);
+    },
+
+    wireRoutingEvents: function() {
+      globalEvents.on('sessionCreated', this.enter, this);
+      globalEvents.on('userCreated', this.enter, this);
     }
 
   });

@@ -2,30 +2,30 @@ define(function(require, exports, module) {
   'use strict';
 
   var Backbone = require('backbone');
-  var session = require('models/session');
-  var loginTemplate = require('templates/login');
+  var User = require('models/user');
+  var signupTemplate = require('templates/signup');
   var serializeForm = require('helpers/serialize-form');
 
-  var Login = Backbone.View.extend({
-    template: loginTemplate,
+  var Signup = Backbone.View.extend({
+    template: signupTemplate,
     events: {
-      'submit': 'login'
+      'submit': 'signup'
     },
 
     initialize: function() {
-      this.session = session;
+      this.user = new User();
     },
 
     render: function() {
       this.$el.html(this.template());
     },
 
-    login: function(event) {
+    signup: function(event) {
       event.preventDefault();
       var data = serializeForm(event.target);
-      this.session.save(data);
+      this.user.save(data);
     }
   });
 
-  return Login;
+  return Signup;
 });

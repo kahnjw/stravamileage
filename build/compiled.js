@@ -18965,22 +18965,26 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
 
 
   buffer += "<div class=\"profile-page\">\n  <img src=\"";
-  if (stack1 = helpers.profile_picture) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
-  else { stack1 = (depth0 && depth0.profile_picture); stack1 = typeof stack1 === functionType ? stack1.call(depth0, {hash:{},data:data}) : stack1; }
+  if (stack1 = helpers.profile) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
+  else { stack1 = (depth0 && depth0.profile); stack1 = typeof stack1 === functionType ? stack1.call(depth0, {hash:{},data:data}) : stack1; }
   buffer += escapeExpression(stack1)
     + "\" class=\"picture\">\n  <div class=\"basic-info\">\n    <h2>";
-  if (stack1 = helpers.username) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
-  else { stack1 = (depth0 && depth0.username); stack1 = typeof stack1 === functionType ? stack1.call(depth0, {hash:{},data:data}) : stack1; }
-  buffer += escapeExpression(stack1)
-    + "</h2><span>";
-  if (stack1 = helpers.first_name) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
-  else { stack1 = (depth0 && depth0.first_name); stack1 = typeof stack1 === functionType ? stack1.call(depth0, {hash:{},data:data}) : stack1; }
+  if (stack1 = helpers.firstname) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
+  else { stack1 = (depth0 && depth0.firstname); stack1 = typeof stack1 === functionType ? stack1.call(depth0, {hash:{},data:data}) : stack1; }
   buffer += escapeExpression(stack1)
     + " ";
-  if (stack1 = helpers.last_name) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
-  else { stack1 = (depth0 && depth0.last_name); stack1 = typeof stack1 === functionType ? stack1.call(depth0, {hash:{},data:data}) : stack1; }
+  if (stack1 = helpers.lastname) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
+  else { stack1 = (depth0 && depth0.lastname); stack1 = typeof stack1 === functionType ? stack1.call(depth0, {hash:{},data:data}) : stack1; }
   buffer += escapeExpression(stack1)
-    + "</span>\n  </div>\n  <div class=\"controls\">\n    <a href=\"#profile/edit\" class=\"edit\">\n      <i class=\"fa fa-pencil-square-o\"></i>\n      Edit\n    </a>\n    <a href=\"#logout\" class=\"logout\">\n      <i class=\"fa fa-sign-out\"></i>\n      Logout\n    </a>\n  </div>\n</div>";
+    + "</h2><span>";
+  if (stack1 = helpers.city) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
+  else { stack1 = (depth0 && depth0.city); stack1 = typeof stack1 === functionType ? stack1.call(depth0, {hash:{},data:data}) : stack1; }
+  buffer += escapeExpression(stack1)
+    + ", ";
+  if (stack1 = helpers.state) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
+  else { stack1 = (depth0 && depth0.state); stack1 = typeof stack1 === functionType ? stack1.call(depth0, {hash:{},data:data}) : stack1; }
+  buffer += escapeExpression(stack1)
+    + "</span>\n  </div>\n  <div class=\"controls\">\n    <a href=\"#logout\" class=\"logout\">\n      <i class=\"fa fa-sign-out\"></i>\n      Logout\n    </a>\n  </div>\n</div>";
   return buffer;
   })
 
@@ -18991,7 +18995,7 @@ define('models/account',['require','exports','module','backbone'],function(requi
   var Backbone = require('backbone');
 
   var Account = Backbone.Model.extend({
-    url: 'fixtures/profile-fixture.json'
+    url: 'api/v1/me/'
   });
 
   return Account;
@@ -19163,15 +19167,13 @@ define('helpers/serialize-form',['require','exports','module','jquery','lodash']
   return serializeForm;
 });
 
-define('views/login',['require','exports','module','backbone','models/session','templates/login','helpers/serialize-form','jquery','lodash'],function(require, exports, module) {
+define('views/login',['require','exports','module','backbone','models/session','templates/login','helpers/serialize-form'],function(require, exports, module) {
   
 
   var Backbone = require('backbone');
   var session = require('models/session');
   var loginTemplate = require('templates/login');
   var serializeForm = require('helpers/serialize-form');
-  var $ = require('jquery');
-  var _ = require('lodash');
 
   var Login = Backbone.View.extend({
     template: loginTemplate,
@@ -19197,7 +19199,275 @@ define('views/login',['require','exports','module','backbone','models/session','
   return Login;
 });
 
-define('router',['require','exports','module','backbone','views/page','views/mileage','views/profile','views/more','views/authenticate','views/login'],function(require, exports, module){
+define('models/user',['require','exports','module','backbone','lodash','global-events'],function(require, exports, module){
+  
+
+  var Backbone = require('backbone');
+  var _ = require('lodash');
+  var globalEvents = require('global-events');
+
+  var User = Backbone.Model.extend({
+    url: '/api/v1/users/',
+
+    initialize: function(options) {
+      _.extend(this, options);
+      this.on('sync', this.complete);
+      this.on('error', this.serverError);
+    },
+
+    complete: function() {
+      globalEvents.trigger('userCreated');
+    },
+
+    serverError: function(session, xhr) {
+      var errors = {};
+      _.extend(errors, xhr.responseJSON);
+
+      this.trigger('invalid', errors);
+    }
+  });
+
+  return User;
+});
+
+define('templates/signup',['handlebars'], function(Handlebars) {
+
+return Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+  this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
+  
+
+
+  return "<div class=\"signup\">\n  <form>\n    <h1>Signup for Mileage</h1>\n    <label for=\"username\" class=\"control-label\">Username</label>\n    <input type=\"text\" name=\"username\">\n    <label for=\"password\" class=\"control-label\">Password</label>\n    <input type=\"password\" name=\"password\">\n    <button type=\"submit\">Signup</button>\n  </form>\n</div>\n";
+  })
+
+});
+define('views/signup',['require','exports','module','backbone','models/user','templates/signup','helpers/serialize-form'],function(require, exports, module) {
+  
+
+  var Backbone = require('backbone');
+  var User = require('models/user');
+  var signupTemplate = require('templates/signup');
+  var serializeForm = require('helpers/serialize-form');
+
+  var Signup = Backbone.View.extend({
+    template: signupTemplate,
+    events: {
+      'submit': 'signup'
+    },
+
+    initialize: function() {
+      this.user = new User();
+    },
+
+    render: function() {
+      this.$el.html(this.template());
+    },
+
+    signup: function(event) {
+      event.preventDefault();
+      var data = serializeForm(event.target);
+      this.user.save(data);
+    }
+  });
+
+  return Signup;
+});
+
+define('templates/gear',['handlebars'], function(Handlebars) {
+
+return Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+  this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
+  
+
+
+  return "<div></div>";
+  })
+
+});
+define('views/gear',['require','exports','module','backbone','templates/gear'],function(require, exports, module){
+  
+
+  var Backbone = require('backbone');
+  var gearTemplate = require('templates/gear');
+
+  var Gear = Backbone.View.extend({
+    template: gearTemplate,
+
+    render: function() {
+      this.$el.html(this.template());
+    }
+  });
+
+  return Gear;
+});
+
+/*!
+ * jQuery Cookie Plugin v1.3.1
+ * https://github.com/carhartl/jquery-cookie
+ *
+ * Copyright 2013 Klaus Hartl
+ * Released under the MIT license
+ */
+(function ($, document, undefined) {
+
+	var pluses = /\+/g;
+
+	function raw(s) {
+		return s;
+	}
+
+	function decoded(s) {
+		return unRfc2068(decodeURIComponent(s.replace(pluses, ' ')));
+	}
+
+	function unRfc2068(value) {
+		if (value.indexOf('"') === 0) {
+			// This is a quoted cookie as according to RFC2068, unescape
+			value = value.slice(1, -1).replace(/\\"/g, '"').replace(/\\\\/g, '\\');
+		}
+		return value;
+	}
+
+	function fromJSON(value) {
+		return config.json ? JSON.parse(value) : value;
+	}
+
+	var config = $.cookie = function (key, value, options) {
+
+		// write
+		if (value !== undefined) {
+			options = $.extend({}, config.defaults, options);
+
+			if (value === null) {
+				options.expires = -1;
+			}
+
+			if (typeof options.expires === 'number') {
+				var days = options.expires, t = options.expires = new Date();
+				t.setDate(t.getDate() + days);
+			}
+
+			value = config.json ? JSON.stringify(value) : String(value);
+
+			return (document.cookie = [
+				encodeURIComponent(key), '=', config.raw ? value : encodeURIComponent(value),
+				options.expires ? '; expires=' + options.expires.toUTCString() : '', // use expires attribute, max-age is not supported by IE
+				options.path    ? '; path=' + options.path : '',
+				options.domain  ? '; domain=' + options.domain : '',
+				options.secure  ? '; secure' : ''
+			].join(''));
+		}
+
+		// read
+		var decode = config.raw ? raw : decoded;
+		var cookies = document.cookie.split('; ');
+		var result = key ? null : {};
+		for (var i = 0, l = cookies.length; i < l; i++) {
+			var parts = cookies[i].split('=');
+			var name = decode(parts.shift());
+			var cookie = decode(parts.join('='));
+
+			if (key && key === name) {
+				result = fromJSON(cookie);
+				break;
+			}
+
+			if (!key) {
+				result[name] = fromJSON(cookie);
+			}
+		}
+
+		return result;
+	};
+
+	config.defaults = {};
+
+	$.removeCookie = function (key, options) {
+		if ($.cookie(key) !== null) {
+			$.cookie(key, null, options);
+			return true;
+		}
+		return false;
+	};
+
+})(jQuery, document);
+
+define("jquery.cookie", ["jquery"], function(){});
+
+define('helpers/csrf',['require','exports','module','jquery','jquery.cookie'],function(require, exports, module){
+  
+
+  var $ = require('jquery');
+  require('jquery.cookie');
+
+  var cookieKey = "csrftoken";
+
+  function setCookie(data) {
+    var cookieOptions = {
+      expires: 365,
+      path: "/"
+    };
+
+    $.cookie(cookieKey, data.csrf_token, cookieOptions);
+  }
+
+  function getTokenFromServer(callback) {
+    return $.get("/api/v1/csrf/", callback);
+  }
+
+  var csrf = {
+    clear: function() {
+      return $.removeCookie(cookieKey, {path: "/"});
+    },
+
+    exists: function() {
+      return !!$.cookie(cookieKey);
+    },
+
+    init: function(callback) {
+      var that = this;
+      this.setCsrfToken().done(function(){
+        callback(that.value());
+      });
+    },
+
+    setCsrfToken: function() {
+      return getTokenFromServer(setCookie);
+    },
+
+    value: function() {
+      return $.cookie(cookieKey);
+    }
+  };
+
+  function csrfSafeMethod(method) {
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+  }
+  function sameOrigin(url) {
+    var host = document.location.host;
+    var protocol = document.location.protocol;
+    var sr_origin = '//' + host;
+    var origin = protocol + sr_origin;
+
+    return (url == origin || url.slice(0, origin.length + 1) == origin + '/') ||
+        (url == sr_origin || url.slice(0, sr_origin.length + 1) == sr_origin + '/') ||
+        !(/^(\/\/|http:|https:).*/.test(url));
+    }
+
+  $.ajaxSetup({
+    beforeSend: function(xhr, settings) {
+      if (!csrfSafeMethod(settings.type) && sameOrigin(settings.url)) {
+        xhr.setRequestHeader("X-CSRFToken", csrf.value());
+      }
+    }
+  });
+
+  return csrf;
+});
+
+define('router',['require','exports','module','backbone','views/page','views/mileage','views/profile','views/more','views/authenticate','views/login','views/signup','views/gear','global-events','helpers/csrf'],function(require, exports, module){
   
 
   var Backbone = require('backbone');
@@ -19207,20 +19477,29 @@ define('router',['require','exports','module','backbone','views/page','views/mil
   var More = require('views/more');
   var Authenticate = require('views/authenticate');
   var Login = require('views/login');
+  var Signup = require('views/signup');
+  var Gear = require('views/gear');
+  var globalEvents = require('global-events');
+  var csrf = require('helpers/csrf');
 
   var Router = Backbone.Router.extend({
     routes: {
       '(/)': 'root',
       '(/)authenticate(/)': 'authenticate',
       '(/)login(/)': 'login',
+      '(/)signup(/)': 'signup',
       '(/)mileage(/)': 'mileage',
       '(/)profile(/)': 'profile',
       '(/)gear(/)': 'gear',
       '(/)more(/)': 'more'
     },
 
-    initialize: function() {
-      this.page = new Page({el: 'body'});
+    initialize: function(options) {
+      if(options && options.el) {
+        this.page = new Page({el: options.el});
+      } else {
+        this.page = new Page({el: 'body'});
+      }
       this.page.render();
 
       this.mileage = new Mileage();
@@ -19228,6 +19507,12 @@ define('router',['require','exports','module','backbone','views/page','views/mil
       this.more = new More();
       this.authenticate = new Authenticate();
       this.login = new Login();
+      this.signup = new Signup();
+      this.gear = new Gear();
+
+      this.wireRoutingEvents();
+
+      csrf.setCsrfToken();
     },
 
     root: function() {
@@ -19242,6 +19527,10 @@ define('router',['require','exports','module','backbone','views/page','views/mil
       this.setup('login', true);
     },
 
+    signup: function() {
+      this.setup('signup', true);
+    },
+
     mileage: function() {
       this.setup('mileage');
     },
@@ -19251,8 +19540,7 @@ define('router',['require','exports','module','backbone','views/page','views/mil
     },
 
     gear: function() {
-      this.page.updateMenu('gear');
-      this.page.swapFrontBack();
+      this.setup('gear');
     },
 
     more: function() {
@@ -19269,6 +19557,15 @@ define('router',['require','exports','module','backbone','views/page','views/mil
       this[viewName].setElement('.back');
       this[viewName].render();
       this.page.swapFrontBack();
+    },
+
+    enter: function() {
+      this.navigate('mileage', true);
+    },
+
+    wireRoutingEvents: function() {
+      globalEvents.on('sessionCreated', this.enter, this);
+      globalEvents.on('userCreated', this.enter, this);
     }
 
   });

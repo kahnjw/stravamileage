@@ -61,12 +61,12 @@ module.exports = function(grunt) {
         proxies: [
           {
             context: [
-              '/api/v1',
+              '/api',
               '/static/rest_framework'
             ],
-            host: '127.0.0.1',
+            host: 'localhost',
             port: 8000,
-            changeOrigin: true
+            xforward: true
           }
         ]
       }
