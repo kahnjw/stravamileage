@@ -1,0 +1,14 @@
+<ul class="activities-list">
+  {{#each activities}}
+    <li>
+      <h3>{{name}}</h3>
+      <ul class="activity-details">
+        <li>Date: {{start_date_local}}</li>
+        <li>Location: {{location_city}}</li>
+        <li>Distance: {{distance}} meters</li>
+        <li>Moving Time: {{moving_time}} seconds</li>
+        <li>Total Elevation Gain: {{total_elevation_gain}} meters</li>
+      </ul>
+    </li>
+  {{/each}}
+</ul>
