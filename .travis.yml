@@ -6,14 +6,14 @@ node_js:
 before_install: npm install -g grunt-cli
 
 install:
-  -npm install
-  -bower install
+  - npm install
+  - bower install
 
 before_script:
-  -grunt build
+  - grunt build
 
 script:
-  -grunt test
+  - grunt test
 
 notifications:
   email: false
