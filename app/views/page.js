@@ -1,9 +1,9 @@
 define(function(require, exports, module) {
-  "use strict";
+  'use strict';
 
-  var Backbone = require("backbone");
+  var Backbone = require('backbone');
   var $ = require('jquery');
-  var pageTemplate = require("templates/page");
+  var pageTemplate = require('templates/page');
   var UserMenu = require('views/user-menu');
 
   var Page = Backbone.View.extend({
@@ -23,6 +23,14 @@ define(function(require, exports, module) {
     swapFrontBack: function() {
       this.$el.find('.fade-page').toggleClass('front back');
       this.$el.find('.back').empty();
+    },
+
+    hideMenu: function() {
+      this.userMenu.$el.hide();
+    },
+
+    showMenu: function() {
+      this.userMenu.$el.show();
     }
   });
 

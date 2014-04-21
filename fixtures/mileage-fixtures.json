@@ -4,7 +4,7 @@
         "gear_name": "Chain",
         "custom_name": "Original Chain",
         "gear_slug": "chain",
-        "manufacturer": "Michelin",
+        "manufacturer": "Shimano",
         "mileage": 1429.3,
         "lifetime": 2000
     },
@@ -13,7 +13,7 @@
         "gear_name": "Tires",
         "custom_name": "My Road Tires",
         "gear_slug": "tires",
-        "manufacturer": "Shimano",
+        "manufacturer": "Michelin",
         "mileage": 1865.8,
         "lifetime": 3000
     },
@@ -23,7 +23,16 @@
         "custom_name": "My Old Break Pads",
         "gear_slug": "break_pads",
         "manufacturer": "Shimano",
-        "mileage": 433.9,
+        "mileage": 0.9,
         "lifetime": 5000
+    },
+    {
+        "id": 1726354,
+        "gear_name": "Full Cleaning",
+        "custom_name": "Cleaned at Shop",
+        "shop": "Locdogs",
+        "gear_slug": "cleaning",
+        "mileage": 586.6,
+        "lifetime": 500
     }
 ]

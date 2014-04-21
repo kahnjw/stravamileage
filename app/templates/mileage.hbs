@@ -4,12 +4,29 @@
       <h2>{{custom_name}}</h2>
       <div class="gear-specs">
         <span class="gear-type">Type: {{gear_name}}</span>
-        <span class="gear-manu">Manufacturer: {{manufacturer}}</span>
+        {{#if manufacturer}}
+          <span class="gear-manu">Manufacturer: {{manufacturer}}</span>
+        {{/if}}
+        {{#if shop}}
+          <span class="gear-shop">Shop: {{shop}}</span>
+        {{/if}}
       </div>
       <div class="chart">
         <span class="chart-text">{{mileage}} of {{lifetime}} miles</span>
-        <div class="bar"></span>
+        <div class="bar">
+          {{#if over}}
+            <i class="fa fa-exclamation-triangle"></i>
+          {{/if}}
+        </div>
       </div>
+      <a href="#gear/{{id}}/edit" class="edit">
+        <i class="fa fa-pencil-square-o"></i>
+        Edit
+      </a>
+      <a href="#gear/{{id}}/delete" class="delete">
+        <i class="fa fa-trash-o"></i>
+        Delete
+      </a>
     </li>
   {{/each}}
 </ul>
