@@ -1,5 +1,7 @@
 # Strava Mileage
 
+[![Build Status](https://travis-ci.org/kahnjw/stravamileage.svg?branch=activity_model)](https://travis-ci.org/kahnjw/stravamileage)
+
 Record mileage on your gear. Know when to replace it.
 
 ## Get (git) It
