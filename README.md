@@ -41,5 +41,5 @@ $ grunt
 ## Run It
 
 ```
-$ grunt connect
+$ grunt server
 ```
