@@ -7,8 +7,6 @@ define(function(require, exports, module){
   var Profile = require('views/profile');
   var More = require('views/more');
   var Authenticate = require('views/authenticate');
-  var Login = require('views/login');
-  var Signup = require('views/signup');
   var Gear = require('views/gear');
   var globalEvents = require('global-events');
   var csrf = require('helpers/csrf');
@@ -17,8 +15,6 @@ define(function(require, exports, module){
     routes: {
       '(/)': 'root',
       '(/)authenticate(/)': 'authenticate',
-      '(/)login(/)': 'login',
-      '(/)signup(/)': 'signup',
       '(/)mileage(/)': 'mileage',
       '(/)profile(/)': 'profile',
       '(/)gear(/)': 'gear',
@@ -52,14 +48,6 @@ define(function(require, exports, module){
 
     authenticate: function() {
       this.setup('authenticate', true);
-    },
-
-    login: function() {
-      this.setup('login', true);
-    },
-
-    signup: function() {
-      this.setup('signup', true);
     },
 
     mileage: function() {
