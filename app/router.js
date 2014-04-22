@@ -33,8 +33,6 @@ define(function(require, exports, module){
       this.profile = new Profile();
       this.more = new More();
       this.authenticate = new Authenticate();
-      this.login = new Login();
-      this.signup = new Signup();
       this.gear = new Gear();
 
       this.wireRoutingEvents();

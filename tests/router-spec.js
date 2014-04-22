@@ -36,16 +36,6 @@ define(function(require, exports, module){
         expect(router.setup).toHaveBeenCalledWith('authenticate', true);
       });
 
-      it('login route goes to login view', function(){
-        router.navigate('login', trigger);
-        expect(router.setup).toHaveBeenCalledWith('login', true);
-      });
-
-      it('signup route goes to signup view', function(){
-        router.navigate('signup', trigger);
-        expect(router.setup).toHaveBeenCalledWith('signup', true);
-      });
-
       it('profile route goes to profile view', function(){
         router.navigate('profile', trigger);
         expect(router.setup).toHaveBeenCalledWith('profile');
