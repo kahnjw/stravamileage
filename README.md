@@ -4,7 +4,7 @@
 
 Record mileage on your gear. Know when to replace it.
 
-Strava Mileage consumes data provided by the [Strava Mileage Backend](https://github.com/kahnjw/mileagebe)
+Strava Mileage consumes data provided by the [Strava Mileage Backend](https://github.com/kahnjw/mileagebe).
 
 ## Get (git) It
 
