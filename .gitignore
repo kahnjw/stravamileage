@@ -4,3 +4,5 @@ npm-debug.log
 build/*
 compiled/*
 compiled_tempaltes/*
+
+/compiled_templates/
