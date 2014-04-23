@@ -1,5 +1,3 @@
-var proxySnippet = require('grunt-connect-proxy/lib/utils').proxyRequest;
-
 module.exports = function(grunt) {
   'use strict';
 
@@ -23,8 +21,8 @@ module.exports = function(grunt) {
         files: ['build/*', 'compiled_template/*']
       },
       requirejs: {
-          files: ['app/**/*.js'],
-          tasks: ['jshint', 'handlebars', 'requirejs', 'testem']
+        files: ['app/**/*.js'],
+        tasks: ['jshint', 'handlebars', 'requirejs', 'testem']
       },
       jsTests: {
         files: ['tests/spec-runner-template.html', 'tests/**/*.js'],
@@ -40,7 +38,7 @@ module.exports = function(grunt) {
           keepalive: true,
           middleware: function (connect, options) {
             if (!Array.isArray(options.base)) {
-                options.base = [options.base];
+              options.base = [options.base];
             }
 
             // Setup the proxy
@@ -48,7 +46,7 @@ module.exports = function(grunt) {
 
             // Serve static files
             options.base.forEach(function(base) {
-                middlewares.push(connect.static(base));
+              middlewares.push(connect.static(base));
             });
 
             // Make directory browse-able
@@ -162,4 +160,3 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-connect-proxy');
 };
-
