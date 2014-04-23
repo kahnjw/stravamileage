@@ -15,6 +15,7 @@ var require = {
     lodash: '../bower_components/lodash/dist/lodash',
     handlebars: '../bower_components/handlebars/handlebars.runtime',
     bootstrap: '../bower_components/bootstrap/js',
+    q: '../bower_components/q/q.js',
     'jquery.cookie': '../bower_components/jquery.cookie/jquery.cookie',
     templates: '../compiled_templates'
   },
