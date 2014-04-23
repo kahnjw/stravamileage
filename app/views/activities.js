@@ -9,8 +9,15 @@ define(function(require, exports, module){
     template: activitiesTemplate,
 
     initialize: function() {
+      var fetchOptions = {
+        data: {
+          'distance': 'miles',
+          'total_elevation_gain': 'feet'
+        }
+      };
+
       this.activities = new ActivitiesCollection();
-      this.activities.fetch();
+      this.activities.fetch(fetchOptions);
     },
 
     render: function() {
