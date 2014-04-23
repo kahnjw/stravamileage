@@ -12,7 +12,9 @@ define(function(require, exports, module){
       var fetchOptions = {
         data: {
           'distance': 'miles',
-          'total_elevation_gain': 'feet'
+          'total_elevation_gain': 'feet',
+          'max_speed': 'miles.hour',
+          'average_speed': 'miles.hour'
         }
       };
 
