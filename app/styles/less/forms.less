@@ -1,9 +1,9 @@
 input, button {
-  background: #eee;
-  color: #333;
+  background: @base;
+  color: @link;
   padding: 1em;
   border-radius: 0.7em;
-  border: 3px #888 solid;
+  border: 3px @border solid;
   font-size: 14px;
 }
 
@@ -12,16 +12,29 @@ input:focus, button:focus {
   border-color: @orange;
 }
 
-.simple-button {
-  &:focus {
-    border-color: #888;
-  }
-  &:hover {
-    border-color: @orange;
-  }
+button:hover {
+  cursor: pointer;
 }
 
 .simple-button {
+  color: @base;
+  display: block;
+  margin: 0 auto;
+  padding: 1.0em;
+  border: 0;
+  background: @orange;
+  border-radius: 1.3em;
+  width: 50%;
+  margin: 1.5em auto;
+
+  &:focus {
+    border-color: none;
+  }
+
+  &:hover {
+    background-color: @dark-orange;
+  }
+
   i {
     padding-right: 0.6em;
   }
