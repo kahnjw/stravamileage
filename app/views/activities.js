@@ -6,20 +6,14 @@ define(function(require, exports, module){
   var activitiesTemplate = require('templates/activities');
 
   var Activities = Backbone.View.extend({
+    events: {
+      'click .simple-button': 'refresh'
+    },
     template: activitiesTemplate,
 
     initialize: function() {
-      var fetchOptions = {
-        data: {
-          'distance': 'miles',
-          'total_elevation_gain': 'feet',
-          'max_speed': 'miles.hour',
-          'average_speed': 'miles.hour'
-        }
-      };
-
       this.activities = new ActivitiesCollection();
-      this.activities.fetch(fetchOptions);
+      this.activities.fetch();
     },
 
     render: function() {
@@ -31,6 +25,12 @@ define(function(require, exports, module){
       var data = { activities: this.activities.toJSON()};
 
       this.$el.html(this.template(data));
+    },
+
+    refresh: function() {
+      this.activities.fetch({
+        data: {refresh: true}
+      });
     }
   });
 
