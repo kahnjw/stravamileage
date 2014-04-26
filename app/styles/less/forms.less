@@ -11,3 +11,18 @@ input:focus, button:focus {
   outline: none;
   border-color: @orange;
 }
+
+.simple-button {
+  &:focus {
+    border-color: #888;
+  }
+  &:hover {
+    border-color: @orange;
+  }
+}
+
+.simple-button {
+  i {
+    padding-right: 0.6em;
+  }
+}
