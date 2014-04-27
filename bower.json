@@ -19,7 +19,8 @@
     "requirejs": "2.1.x",
     "backbone": "1.1.x",
     "fontawesome": "4.0.x",
-    "q": "2.0.x"
+    "q": "2.0.x",
+    "fastclick": "1.0.x"
   },
   "devDependencies": {
     "jasmine": "1.3.x",

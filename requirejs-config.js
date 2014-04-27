@@ -17,7 +17,8 @@ var require = {
     bootstrap: '../bower_components/bootstrap/js',
     q: '../bower_components/q/q.js',
     'jquery.cookie': '../bower_components/jquery.cookie/jquery.cookie',
-    templates: '../compiled_templates'
+    templates: '../compiled_templates',
+    fastclick: '../bower_components/fastclick/lib/fastclick'
   },
   shim: {
     'jquery.cookie': {
