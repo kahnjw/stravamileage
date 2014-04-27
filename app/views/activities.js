@@ -4,6 +4,7 @@ define(function(require, exports, module){
   var Backbone = require('backbone');
   var ActivitiesCollection = require('collections/activities');
   var activitiesTemplate = require('templates/activities');
+  var _  = require('lodash');
 
   var Activities = Backbone.View.extend({
     events: {
@@ -28,9 +29,20 @@ define(function(require, exports, module){
     },
 
     refresh: function() {
-      this.activities.fetch({
+      var data = {
         data: {refresh: true}
-      });
+      };
+      var callDone = _.bind(this.done, this);
+
+      this.activities.fetch(data)
+        .success(callDone)
+        .fail(callDone);
+
+      this.$el.find('.simple-button i').addClass('spin');
+    },
+
+    done: function() {
+      this.$el.find('.simple-button i').removeClass('spin');
     }
   });
 

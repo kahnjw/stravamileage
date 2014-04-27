@@ -6,7 +6,7 @@ define(function(require, exports, module){
   var globalEvents = require('global-events');
 
   var Session = Backbone.Model.extend({
-    url: '/api/v1/auth/',
+    url: '/api/v1/users/session/',
 
     initialize: function(options) {
       _.extend(this, options);

@@ -62,7 +62,7 @@ module.exports = function(grunt) {
               '/api',
               '/static/rest_framework'
             ],
-            host: 'localhost',
+            host: 'stravamileage.com',
             port: 8000,
             xforward: true
           }
