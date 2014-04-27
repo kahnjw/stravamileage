@@ -34,7 +34,7 @@ module.exports = function(grunt) {
         options: {
           port: 9000,
           base: ['app/html', '.'],
-          hostname: 'localhost',
+          hostname: '0.0.0.0',
           keepalive: true,
           middleware: function (connect, options) {
             if (!Array.isArray(options.base)) {
