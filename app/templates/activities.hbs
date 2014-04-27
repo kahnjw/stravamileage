@@ -2,56 +2,54 @@
   <button class="simple-button"><i class="fa fa-refresh"></i>Refresh Activities</button>
   {{#each activities}}
     <li>
-      {{#if name}}
-        <h3>{{name}}</h3>
-      {{/if}}
       <div class="dash">
+        {{#if name}}
+          <h3>{{name}}</h3>
+        {{/if}}
         <ul class="activity-details">
-          <li class="location">
-            <i class="fa fa-map-marker"></i><snan>{{location_city}}</span>
-          </li>
-          <!--<li>
-            <h4>
-              <i class="fa fa-clock-o"></i>
-              Moving Time
-            </h4>
-            <div><span>{{moving_time}}</span> hours</div>
-          </li>-->
-          <table class="blocks">
-            <tbody>
-              <tr>
-                <td class="distance">
-                  <i class="fa fa-flag-checkered"></i>
-                  <h4>Distance</h4>
-                  <span>{{distance}} miles</span>
-                  <div class="clearboth"></div>
-                </td>
-                <td class="elevation-gain">
-                  <i class="fa fa-arrow-circle-up"></i>
-                  <h4>Elevation Gain</h4>
-                  <span>{{total_elevation_gain}} feet</span>
-                  <div class="clearboth"></div>
-                </td>
-              </tr>
-              <tr>
-                <td class="max-speed">
-                  <i class="fa fa-fighter-jet"></i>
-                  <h4>Max Speed</h4>
-                  <span>{{max_speed}} miles/hour</span>
-                  <div class="clearboth"></div>
-                </td>
-                <td class="average-speed">
-                  <i class="fa fa-tachometer"></i>
-                  <h4>Average Speed</h4>
-                  <span>{{average_speed}} miles/hour</span>
-                  <div class="clearboth"></div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          {{#if location_city}}
+            <li class="location">
+              <i class="fa fa-map-marker"></i><span>{{location_city}}</span>
+            </li>
+          {{/if}}
+          {{#if nice_moving_time}}
+            <li class="moving-time">
+              <i class="fa fa-clock-o"></i><span>{{nice_moving_time}}</span>
+            </li>
+          {{/if}}
+          {{#if nice_start_date}}
+            <li class="start-date">
+              <i class="fa fa-calendar"></i><span>{{nice_start_date}}</span>
+            </li>
+          {{/if}}
         </ul>
-      </div>
-    </li>
+        <div class="blocks">
+          <div class="distance">
+            <i class="fa fa-flag-checkered"></i>
+            <h4>Distance</h4>
+            <span>{{distance}} miles</span>
+            <div class="clearboth"></div>
+          </div>
+          <div class="elevation-gain">
+            <i class="fa fa-arrow-circle-up"></i>
+            <h4>Elevation Gain</h4>
+            <span>{{total_elevation_gain}} feet</span>
+            <div class="clearboth"></div>
+          </div>
+          <div class="max-speed">
+            <i class="fa fa-fighter-jet"></i>
+            <h4>Max Speed</h4>
+            <span>{{max_speed}} miles/hour</span>
+            <div class="clearboth"></div>
+          </div>
+          <div class="average-speed">
+            <i class="fa fa-tachometer"></i>
+            <h4>Average Speed</h4>
+            <span>{{average_speed}} miles/hour</span>
+            <div class="clearboth"></div>
+          </div>
+        </div>
+      </li>
     <div class="clearboth"></div>
   {{/each}}
 </ul>

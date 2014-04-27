@@ -10,6 +10,7 @@ define(function(require, exports, module){
   var Gear = require('views/gear');
   var globalEvents = require('global-events');
   var csrf = require('helpers/csrf');
+  var CreateEditGear = require('views/create-edit-gear');
 
   var Router = Backbone.Router.extend({
     routes: {
@@ -17,6 +18,7 @@ define(function(require, exports, module){
       '(/)authenticate(/)': 'authenticate',
       '(/)mileage(/)': 'mileage',
       '(/)profile(/)': 'profile',
+      '(/)gear/create-edit-gear': 'createEditGear',
       '(/)gear(/)': 'gear',
       '(/)more(/)': 'more'
     },
@@ -34,6 +36,7 @@ define(function(require, exports, module){
       this.more = new More();
       this.authenticate = new Authenticate();
       this.gear = new Gear();
+      this.createEditGear = new CreateEditGear();
 
       this.wireRoutingEvents();
 
@@ -58,6 +61,10 @@ define(function(require, exports, module){
 
     gear: function() {
       this.setup('gear');
+    },
+
+    createEditGear: function() {
+      this.setup('createEditGear');
     },
 
     more: function() {

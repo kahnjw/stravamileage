@@ -3,19 +3,23 @@
   background-color: @light;
 
   h3 {
-    color: #aaa;
-    padding: 0.3em;
+    padding: 0.6em 0 0.3em 0;
+    font-size: 120%;
   }
 
   .dash {
-    border-top: 1px solid @border;
-    margin: 0.5em;
+    padding: 0.7em 0;
+    margin: 0.1em 0.5em 0.5em 0.5em;
+
+    ul {
+      border-top: 1px solid @border;
+    }
 
     li {
       font-size: 14px;
     }
 
-    .location {
+    .location, .moving-time, .start-date {
       .orb-ui-widget;
       margin: 0.5em 0.5em 0.5em 0;
       display: inline-block;
@@ -25,12 +29,14 @@
     .max-speed, .average-speed, .elevation-gain, .distance {
       .block-ui-widget;
       margin: 0;
+      width: 50%;
+      box-sizing: border-box;
+      display: inline-block;
+      font-size: 16px;
     }
     .blocks {
       width: 100%;
-      td {
-        padding: 0.3em;
-      }
+      font-size: 0;
     }
   }
 }
