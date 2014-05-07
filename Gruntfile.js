@@ -72,6 +72,13 @@ module.exports = function(grunt) {
         options: {
           transform: ['hbsfy']
         }
+      },
+      testBundle: {
+        src: ['tests/**/*.js'],
+        dest: 'test-bundles/tests.js',
+        options: {
+          transform: ['hbsfy']
+        }
       }
     },
     less: {
@@ -133,6 +140,7 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('test', [
+    'browserify:testBundle',
     'env:phantom',
     'testem'
   ]);

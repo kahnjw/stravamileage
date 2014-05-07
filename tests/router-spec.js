@@ -1,10 +1,12 @@
 'use strict';
 
-describe('Router', function() {
+var $ = require('jquery');
+var Backbone = require('backbone');
+var Router = require('../app/router');
 
-  var Backbone = require('backbone');
-  var $ = require('jquery');
-  var Router = require('router');
+Backbone.$ = $;
+
+describe('Router', function() {
   var router;
   var trigger = {trigger: true};
 
@@ -15,7 +17,7 @@ describe('Router', function() {
       Backbone.history.stop();
       spyOn(Router.prototype, 'setup');
 
-      router = new Router({el: $('<div>')});
+      router = new Router({page: $('<div>')});
       Backbone.history.start();
     });
 

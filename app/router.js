@@ -25,8 +25,8 @@ var Router = Backbone.Router.extend({
   },
 
   initialize: function(options) {
-    if(options && options.el) {
-      this.page = new Page({el: options.el});
+    if(options && options.page) {
+      this.page = new Page({el: options.page});
     } else {
       this.page = new Page({el: 'body'});
     }
