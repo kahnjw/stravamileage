@@ -1,13 +1,51 @@
+form {
+  padding: 0.5em;
+  border-radius: 0.7em;
+  margin: 0.5em 1.0em;
+}
+
 input, button {
-  background: #eee;
-  color: #333;
+  background: @base;
+  color: @link;
   padding: 1em;
   border-radius: 0.7em;
-  border: 3px #888 solid;
+  border: 3px @border solid;
   font-size: 14px;
+  display: block;
+  margin: 0.6em 0;
 }
 
 input:focus, button:focus {
   outline: none;
   border-color: @orange;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.simple-button {
+  color: @base;
+  display: block;
+  margin: 0 auto;
+  padding: 1.0em;
+  border: 0;
+  background: @orange;
+  border-radius: 1.3em;
+  width: 50%;
+  margin: 1.5em auto;
+  text-align: center;
+
+  &:focus {
+    border-color: none;
+  }
+
+  &:hover {
+    background-color: @dark-orange;
+    color: #fff;
+  }
+
+  i {
+    padding-right: 0.6em;
+  }
 }

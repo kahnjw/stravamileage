@@ -1,1 +1,21 @@
-<div></div>
+<a class="simple-button" href="#gear/create-edit-gear">
+  <i class="fa fa-plus"></i>
+  Add Gear
+</a>
+<div class="gear-list">
+  <div class="blocks">
+    {{#each gear}}
+      <div class="gear-item">
+        <h4>{{name}}</h4>
+        <a href="#gear/{{id}}/edit" class="edit">
+          <i class="fa fa-pencil-square-o"></i>
+          Edit
+        </a>
+        <a href="#gear/{{id}}/delete" class="delete">
+          <i class="fa fa-trash-o"></i>
+          Delete
+        </a>
+      </div>
+    {{/each}}
+  </div>
+</div>

@@ -30,3 +30,34 @@
   border-radius: 50%;
   background-color: @orange;
 }
+
+.ui-widget {
+  padding: 0.5em;
+  background-color: @base;
+  border: 1px solid @border;
+}
+
+.orb-ui-widget {
+  .ui-widget;
+  border-radius: 1.0em;
+  i {
+    color: @orange;
+    padding-right:0.5em
+  }
+}
+
+.block-ui-widget {
+  .ui-widget;
+  border: 1px solid @border;
+  i {
+    font-size: 50px;
+    float: left;
+    display: inline;
+    padding-right: 0.3em;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-size: 18px;
+    display: block;
+  }
+}

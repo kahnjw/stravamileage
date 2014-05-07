@@ -4,7 +4,7 @@
 body {
   margin: 0;
   padding: 0;
-  background: #444;
+  background: @base;
 }
 
 .page {
@@ -29,8 +29,8 @@ header {
   }
 
   nav {
-    background: #333;
-    border-bottom: 2px solid #666;
+    background: @light;
+    border-bottom: 2px solid @border;
     width: 100%;
 
     i {
@@ -49,7 +49,6 @@ header {
     }
 
     a {
-      color: #fff;
       width: 4.5em;
       height: 2.5em;
       padding: 1.0em 0;
@@ -84,18 +83,19 @@ header {
   li {
     padding: 2em;
     margin: 1em 0;
-    border-bottom: 1px #666 solid;
+    border-bottom: 1px @border solid;
 
     .chart {
-      background: #666;
-      border: 3px solid #888;
+      background: @dark;
+      border: 3px solid #aaa;
       height: @chart-height;
       border-radius: 2em;
     }
 
     .chart-text {
       position: absolute;
-      padding: 1em;
+      padding: 0.9em;
+      color: @base;
     }
 
     .bar {
@@ -109,6 +109,7 @@ header {
         float: right;
         padding: 0.5em;
         font-size: 24px;
+        color: @base;
       }
     }
 
@@ -156,23 +157,6 @@ header {
   .logout:hover {
     color: @orange;
   }
-
-  .activities {
-    border-top: 2px solid #888;
-
-    h3 {
-      color: #aaa;
-    }
-
-    .activities-list > li {
-      padding: 1.5em;
-      border-bottom: 1px solid #888
-    }
-
-    .activity-details > li {
-      padding: 0.3em 0 0 0;
-    }
-  }
 }
 
 .more-list {
@@ -181,8 +165,7 @@ header {
     font-size: 24px;
     padding: 1.5em;
     display: block;
-    color: #aaa;
-    border-bottom: 1px solid #666;
+    border-bottom: 1px solid @border;
   }
 
   a:hover, a:active {
@@ -196,11 +179,9 @@ header {
 
 .connect, .login, .signup {
   padding: 2em 0;
-  color: #888;
   font-size: 12px;
 
   h1 {
-    color: #aaa;
     font-size: 18px;
   }
 
@@ -223,5 +204,59 @@ header {
     margin: 1em auto;
     display: block;
     width: 93%;
+  }
+}
+
+.gear-list {
+  border-top: 2px solid @border;
+  background-color: @light;
+
+  .gear-item {
+    background-color: @base;
+    border: 1px solid @border;
+    padding: 0.5em;
+    margin: 0;
+    width: 50%;
+    box-sizing: border-box;
+    display: inline-block;
+    font-size: 16px;
+    h4 {
+      font-size: 18px;
+    }
+    a {
+      color: @base-font;
+      padding: 0.5em 0.5em 0 0;
+      display: inline-block;
+    }
+    a:hover {
+      color: @orange;
+    }
+  }
+  .blocks {
+    width: 100%;
+    font-size: 0;
+  }
+}
+
+.gear-create-edit {
+  input {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+.headline {
+  display: inline-block;
+  box-sizing: border-box;
+  width: 50%;
+  left: 25%;
+  margin-top: 0.7em;
+  text-align: center;
+  position: absolute;
+  top: 0;
+
+  h1, h2, h3, h4 {
+    font-size: 2em;
   }
 }

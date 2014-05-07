@@ -5,6 +5,9 @@ define(function(require, exports, module) {
   var $ = require('jquery');
   var pageTemplate = require('templates/page');
   var UserMenu = require('views/user-menu');
+  var FastClick = require('fastclick');
+
+  FastClick.attach(document.body);
 
   var Page = Backbone.View.extend({
     template: pageTemplate,
