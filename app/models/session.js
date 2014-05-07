@@ -1,35 +1,33 @@
-define(function(require, exports, module){
-  'use strict';
+'use strict';
 
-  var Backbone = require('backbone');
-  var _ = require('lodash');
-  var globalEvents = require('global-events');
+var Backbone = require('backbone');
+var _ = require('lodash');
+var globalEvents = require('../global-events');
 
-  var Session = Backbone.Model.extend({
-    url: '/api/v1/users/session/',
+var Session = Backbone.Model.extend({
+  url: '/api/v1/users/session/',
 
-    initialize: function(options) {
-      _.extend(this, options);
-      this.on('sync', this.complete);
-      this.on('error', this.serverError);
-    },
+  initialize: function(options) {
+    _.extend(this, options);
+    this.on('sync', this.complete);
+    this.on('error', this.serverError);
+  },
 
-    complete: function() {
-      globalEvents.trigger('sessionCreated');
-    },
+  complete: function() {
+    globalEvents.trigger('sessionCreated');
+  },
 
-    serverError: function(session, xhr) {
-      var errors = {};
+  serverError: function(session, xhr) {
+    var errors = {};
 
-      if(xhr.status === 403) {
-        errors.notAuthorized = 'Email/Password mismatch';
-      }
-
-      _.extend(errors, xhr.responseJSON);
-
-      this.trigger('invalid', errors);
+    if(xhr.status === 403) {
+      errors.notAuthorized = 'Email/Password mismatch';
     }
-  });
 
-  return new Session();
+    _.extend(errors, xhr.responseJSON);
+
+    this.trigger('invalid', errors);
+  }
 });
+
+module.exports = new Session();

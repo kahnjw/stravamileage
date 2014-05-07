@@ -10,17 +10,7 @@
     "tests"
   ],
   "dependencies": {
-    "handlebars": "1.3.x",
-    "h5bp-console-polyfill": "0.0.2",
-    "jquery": "1.10.2",
-    "jquery.inputmask": "2.4.x",
-    "jquery.cookie": "1.3.1",
-    "lodash": "2.4.x",
-    "requirejs": "2.1.x",
-    "backbone": "1.1.x",
-    "fontawesome": "4.0.x",
-    "q": "2.0.x",
-    "fastclick": "1.0.x"
+    "fontawesome": "4.0.x"
   },
   "devDependencies": {
     "jasmine": "1.3.x",

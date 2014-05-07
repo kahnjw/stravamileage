@@ -1,16 +1,14 @@
-define(function(require, exports, module){
-  'use strict';
+'use strict';
 
-  var Backbone = require('backbone');
-  var moreTemplate = require('templates/more');
+var Backbone = require('backbone');
+var moreTemplate = require('../templates/more.hbs');
 
-  var More = Backbone.View.extend({
-    template: moreTemplate,
+var More = Backbone.View.extend({
+  template: moreTemplate,
 
-    render: function() {
-      this.$el.html(this.template());
-    }
-  });
-
-  return More;
+  render: function() {
+    this.$el.html(this.template());
+  }
 });
+
+module.exports = More;

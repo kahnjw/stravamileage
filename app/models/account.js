@@ -1,11 +1,9 @@
-define(function(require, exports, module){
-  'use strict';
+'use strict';
 
-  var Backbone = require('backbone');
+var Backbone = require('backbone');
 
-  var Account = Backbone.Model.extend({
-    url: 'api/v1/strava/me/'
-  });
-
-  return Account;
+var Account = Backbone.Model.extend({
+  url: 'api/v1/strava/me/'
 });
+
+module.exports = Account;

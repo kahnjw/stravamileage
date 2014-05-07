@@ -1,10 +1,10 @@
-define(function(require, exports, module){
-  'use strict';
+'use strict';
 
-  var Router = require('router');
-  var Backbone = require('backbone');
-  require('require-runtime-config');
+var $ = require('jquery');
+var Backbone = require('backbone');
+var Router = require('./router');
 
-  var router = new Router();
-  Backbone.history.start();
-});
+Backbone.$ = $;
+
+new Router();
+Backbone.history.start();
