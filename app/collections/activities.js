@@ -1,11 +1,9 @@
-define(function(require, exports, module) {
-  'use strict';
+'use strict';
 
-  var Backbone = require('backbone');
+var Backbone = require('backbone');
 
-  var Activities = Backbone.Collection.extend({
-    url: 'api/v1/activities/'
-  });
-
-  return Activities;
+var Activities = Backbone.Collection.extend({
+  url: 'api/v1/activities/'
 });
+
+module.exports = Activities;

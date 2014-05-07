@@ -531,7 +531,8 @@ header nav:after {
   font-size: 0;
 }
 /* line 242, /Users/kahnjw/Documents/strava_mileage/app/styles/less/screen.less */
-.gear-create-edit input {
+.edit input,
+.create input {
   display: block;
   width: 100%;
   box-sizing: border-box;
@@ -602,36 +603,6 @@ input:focus,
 button:focus {
   outline: none;
   border-color: #f73308;
-}
-/* line 23, /Users/kahnjw/Documents/strava_mileage/app/styles/less/forms.less */
-button:hover {
-  cursor: pointer;
-}
-/* line 27, /Users/kahnjw/Documents/strava_mileage/app/styles/less/forms.less */
-.simple-button {
-  color: #ffffff;
-  display: block;
-  margin: 0 auto;
-  padding: 1.0em;
-  border: 0;
-  background: #f73308;
-  border-radius: 1.3em;
-  width: 50%;
-  margin: 1.5em auto;
-  text-align: center;
-}
-/* line 39, /Users/kahnjw/Documents/strava_mileage/app/styles/less/forms.less */
-.simple-button:focus {
-  border-color: none;
-}
-/* line 43, /Users/kahnjw/Documents/strava_mileage/app/styles/less/forms.less */
-.simple-button:hover {
-  background-color: #db2902;
-  color: #fff;
-}
-/* line 48, /Users/kahnjw/Documents/strava_mileage/app/styles/less/forms.less */
-.simple-button i {
-  padding-right: 0.6em;
 }
 /* line 1, /Users/kahnjw/Documents/strava_mileage/app/styles/less/activity-console.less */
 .activities {
@@ -741,4 +712,83 @@ button:hover {
 /* line 6, /Users/kahnjw/Documents/strava_mileage/app/styles/less/buttons.less */
 .back-button span {
   display: none;
+}
+/* line 11, /Users/kahnjw/Documents/strava_mileage/app/styles/less/buttons.less */
+.simple-button {
+  color: #ffffff;
+  display: block;
+  margin: 0 auto;
+  padding: 1.0em;
+  border: 0;
+  background: #f73308;
+  border-radius: 1.3em;
+  width: 50%;
+  margin: 1.5em auto;
+  text-align: center;
+}
+/* line 23, /Users/kahnjw/Documents/strava_mileage/app/styles/less/buttons.less */
+.simple-button:focus {
+  border-color: none;
+}
+/* line 27, /Users/kahnjw/Documents/strava_mileage/app/styles/less/buttons.less */
+.simple-button:hover {
+  background-color: #db2902;
+  color: #fff;
+}
+/* line 32, /Users/kahnjw/Documents/strava_mileage/app/styles/less/buttons.less */
+.simple-button i {
+  margin-right: 0.6em;
+}
+/* line 37, /Users/kahnjw/Documents/strava_mileage/app/styles/less/buttons.less */
+.spin {
+  -webkit-animation-name: spin;
+  -webkit-animation-duration: 1500ms;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  -moz-animation-name: spin;
+  -moz-animation-duration: 1500ms;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-timing-function: linear;
+  -ms-animation-name: spin;
+  -ms-animation-duration: 1500ms;
+  -ms-animation-iteration-count: infinite;
+  -ms-animation-timing-function: linear;
+  animation-name: spin;
+  animation-duration: 1500ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+@-ms-keyframes spin {
+  /* line 56, /Users/kahnjw/Documents/strava_mileage/app/styles/less/buttons.less */
+  from {
+    -ms-transform: rotate(0deg);
+  }
+  /* line 57, /Users/kahnjw/Documents/strava_mileage/app/styles/less/buttons.less */
+  to {
+    -ms-transform: rotate(360deg);
+  }
+}
+@-moz-keyframes spin {
+  /* line 60, /Users/kahnjw/Documents/strava_mileage/app/styles/less/buttons.less */
+  from {
+    -moz-transform: rotate(0deg);
+  }
+  /* line 61, /Users/kahnjw/Documents/strava_mileage/app/styles/less/buttons.less */
+  to {
+    -moz-transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes spin {
+  /* line 64, /Users/kahnjw/Documents/strava_mileage/app/styles/less/buttons.less */
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  /* line 65, /Users/kahnjw/Documents/strava_mileage/app/styles/less/buttons.less */
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+/* line 68, /Users/kahnjw/Documents/strava_mileage/app/styles/less/buttons.less */
+button:hover {
+  cursor: pointer;
 }

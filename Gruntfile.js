@@ -20,13 +20,9 @@ module.exports = function(grunt) {
         options: { livereload: true },
         files: ['build/*', 'compiled_template/*']
       },
-      requirejs: {
+      browserify: {
         files: ['app/**/*.js'],
-        tasks: ['jshint', 'handlebars', 'requirejs', 'testem']
-      },
-      jsTests: {
-        files: ['tests/spec-runner-template.html', 'tests/**/*.js'],
-        tasks: ['jshint', 'testem']
+        tasks: ['jshint', 'handlebars', 'browserify', 'testem']
       }
     },
     connect: {
@@ -62,11 +58,27 @@ module.exports = function(grunt) {
               '/api',
               '/static/rest_framework'
             ],
-            host: 'localhost',
+            host: 'stravamileage.com',
             port: 8000,
             xforward: true
           }
         ]
+      }
+    },
+    browserify: {
+      client: {
+        src: ['app/**/*.js'],
+        dest: 'build/stravamileage.js',
+        options: {
+          transform: ['hbsfy']
+        }
+      },
+      testBundle: {
+        src: ['tests/**/*.js'],
+        dest: 'test-bundles/tests.js',
+        options: {
+          transform: ['hbsfy']
+        }
       }
     },
     less: {
@@ -97,20 +109,11 @@ module.exports = function(grunt) {
       }
     },
     jshint: {
-      configs: [
-        'Gruntfile.js',
-        'package.json',
-        'bower.json'
-      ],
+      options: {
+        jshintrc: true,
+      },
       mvc: ['app/**/*.js'],
       jstests: ['tests/**/*.js']
-    },
-    requirejs: {
-      compile: {
-        options: {
-          mainConfigFile: 'requirejs-config.js'
-        }
-      }
     },
     testem: {
       local: {
@@ -133,11 +136,11 @@ module.exports = function(grunt) {
   grunt.registerTask('default', [
     'less',
     'handlebars',
-    'requirejs',
     'watch'
   ]);
 
   grunt.registerTask('test', [
+    'browserify:testBundle',
     'env:phantom',
     'testem'
   ]);
@@ -145,8 +148,7 @@ module.exports = function(grunt) {
   grunt.registerTask('build', [
     'less',
     'jshint',
-    'handlebars',
-    'requirejs'
+    'handlebars'
   ]);
 
   grunt.registerTask('server', function (target) {
@@ -159,4 +161,5 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-connect-proxy');
+  grunt.loadNpmTasks('grunt-browserify');
 };

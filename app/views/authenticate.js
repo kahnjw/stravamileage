@@ -1,16 +1,14 @@
-define(function(require, exports, module) {
-  'use strict';
+'use strict';
 
-  var Backbone = require('backbone');
-  var authenticateTemplate = require('templates/authenticate');
+var Backbone = require('backbone');
+var authenticateTemplate = require('../templates/authenticate.hbs');
 
-  var Authenticate = Backbone.View.extend({
-    template: authenticateTemplate,
+var Authenticate = Backbone.View.extend({
+  template: authenticateTemplate,
 
-    render: function() {
-      this.$el.html(this.template());
-    }
-  });
-
-  return Authenticate;
+  render: function() {
+    this.$el.html(this.template());
+  }
 });
+
+module.exports = Authenticate;

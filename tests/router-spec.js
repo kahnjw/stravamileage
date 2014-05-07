@@ -1,55 +1,54 @@
-/* global afterEach */
-define(function(require, exports, module){
-  'use strict';
+'use strict';
 
-  describe('Router', function() {
+var $ = require('jquery');
+var Backbone = require('backbone');
+var Router = require('../app/router');
 
-    var Backbone = require('backbone');
-    var $ = require('jquery');
-    var Router = require('router');
-    var router;
-    var trigger = {trigger: true};
+Backbone.$ = $;
 
-    describe('route functions', function() {
-      beforeEach(function() {
-        // The Backbone history code dodges our spies
-        // unless we set them up exactly like this:
-        Backbone.history.stop();
-        spyOn(Router.prototype, 'setup');
+describe('Router', function() {
+  var router;
+  var trigger = {trigger: true};
 
-        router = new Router({el: $('<div>')});
-        Backbone.history.start();
-      });
+  describe('route functions', function() {
+    beforeEach(function() {
+      // The Backbone history code dodges our spies
+      // unless we set them up exactly like this:
+      Backbone.history.stop();
+      spyOn(Router.prototype, 'setup');
 
-      it('empty route goes to mileage view', function(){
-        router.navigate('', trigger);
-        expect(router.setup).toHaveBeenCalledWith('mileage');
-      });
+      router = new Router({page: $('<div>')});
+      Backbone.history.start();
+    });
 
-      it('mileage route goes to mileage view', function(){
-        router.navigate('mileage', trigger);
-        expect(router.setup).toHaveBeenCalledWith('mileage');
-      });
+    it('empty route goes to mileage view', function(){
+      router.navigate('', trigger);
+      expect(router.setup).toHaveBeenCalledWith('mileage');
+    });
 
-      it('authenticate route goes to authenticate view', function(){
-        router.navigate('authenticate', trigger);
-        expect(router.setup).toHaveBeenCalledWith('authenticate', true);
-      });
+    it('mileage route goes to mileage view', function(){
+      router.navigate('mileage', trigger);
+      expect(router.setup).toHaveBeenCalledWith('mileage');
+    });
 
-      it('profile route goes to profile view', function(){
-        router.navigate('profile', trigger);
-        expect(router.setup).toHaveBeenCalledWith('profile');
-      });
+    it('authenticate route goes to authenticate view', function(){
+      router.navigate('authenticate', trigger);
+      expect(router.setup).toHaveBeenCalledWith('authenticate', true);
+    });
 
-      it('gear route goes to gear view', function(){
-        router.navigate('gear', trigger);
-        expect(router.setup).toHaveBeenCalledWith('gear');
-      });
+    it('profile route goes to profile view', function(){
+      router.navigate('profile', trigger);
+      expect(router.setup).toHaveBeenCalledWith('profile');
+    });
 
-      it('more route goes to more view', function(){
-        router.navigate('more', trigger);
-        expect(router.setup).toHaveBeenCalledWith('more');
-      });
+    it('gear route goes to gear view', function(){
+      router.navigate('gear', trigger);
+      expect(router.setup).toHaveBeenCalledWith('gear');
+    });
+
+    it('more route goes to more view', function(){
+      router.navigate('more', trigger);
+      expect(router.setup).toHaveBeenCalledWith('more');
     });
   });
 });

@@ -1,16 +1,14 @@
-define(function(require, exports, module){
-  'use strict';
+'use strict';
 
-  var Backbone = require('backbone');
+var Backbone = require('backbone');
 
-  var GearModel = Backbone.Model.extend({
-    urlRoot: function(){
-      if(this.id) {
-        return '/api/v1/gear/' + this.id + '/';
-      }
-      return '/api/v1/gear/';
+var GearModel = Backbone.Model.extend({
+  urlRoot: function(){
+    if(this.id) {
+      return '/api/v1/gear/' + this.id + '/';
     }
-  });
-
-  return GearModel;
+    return '/api/v1/gear/';
+  }
 });
+
+module.exports = GearModel;

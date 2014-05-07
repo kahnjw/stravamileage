@@ -1,11 +1,9 @@
-define(function(require, exports, module) {
-  'use strict';
+'use strict';
 
-  var Backbone = require('backbone');
+var Backbone = require('backbone');
 
-  var MileageCollection = Backbone.Collection.extend({
-    url: 'fixtures/mileage-fixtures.json'
-  });
-
-  return MileageCollection;
+var MileageCollection = Backbone.Collection.extend({
+  url: 'fixtures/mileage-fixtures.json'
 });
+
+module.exports = MileageCollection;
