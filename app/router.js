@@ -18,7 +18,8 @@ var Router = Backbone.Router.extend({
     '(/)authenticate(/)': 'authenticate',
     '(/)mileage(/)': 'mileage',
     '(/)profile(/)': 'profile',
-    '(/)gear/create-edit-gear': 'createEditGear',
+    '(/)gear/:gearId/edit(/)': 'createEditGear',
+    '(/)gear/create(/)': 'createEditGear',
     '(/)gear(/)': 'gear',
     '(/)more(/)': 'more',
     '(/)login(/)': 'login'
@@ -69,7 +70,11 @@ var Router = Backbone.Router.extend({
     this.setup('gear');
   },
 
-  createEditGear: function() {
+  createEditGear: function(gearId) {
+    if(gearId) {
+      this.createEditGear.getModel(gearId);
+    }
+
     this.setup('createEditGear');
   },
 

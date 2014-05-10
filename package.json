@@ -29,6 +29,7 @@
     "jquery.cookie": "1.4.x",
     "grunt-browserify": "2.0.x",
     "rivets": "0.6.x",
-    "stringify": "2.1.x"
+    "stringify": "2.1.x",
+    "watchjs": "0.0.0"
   }
 }

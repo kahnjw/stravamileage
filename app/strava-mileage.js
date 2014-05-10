@@ -4,7 +4,11 @@ var $ = require('jquery');
 var Backbone = require('backbone');
 var Router = require('./router');
 
-require('./helpers/rivets-overrides');
+require('./rivets/config');
+require('./rivets/adapter');
+require('./rivets/binders');
+require('./rivets/formatters');
+
 Backbone.$ = $;
 
 new Router();

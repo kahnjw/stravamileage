@@ -24,9 +24,7 @@ var SessionView = Backbone.View.extend({
     window.location.hash = '#mileage';
   },
 
-  failed: function() {
-    console.log('Login failed');
-  },
+  failed: function() {},
 
   submit: function(event) {
     event.preventDefault();

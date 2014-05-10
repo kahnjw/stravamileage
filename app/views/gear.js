@@ -2,28 +2,25 @@
 
 var Backbone = require('backbone');
 var gearTemplate = require('../templates/gear.rvt');
-var GearCollection = require('../collections/gear-collection');
+var gearCollection = require('../collections/gear-collection');
+var rivets = require('rivets');
 
 var Gear = Backbone.View.extend({
   template: gearTemplate,
 
   initialize: function() {
-    this.gearCollection = new GearCollection();
+    this.gearCollection = gearCollection;
     this.gearCollection.fetch();
   },
 
   render: function() {
-    this.listenTo(this.gearCollection, 'add', this.insertView);
-    this.insertView();
-  },
-
-  insertView: function() {
-    // var data = {
-    //   gear: this.gearCollection.toJSON()
-    // };
-
     this.$el.html(this.template);
-  },
+
+    rivets.bind(this.$el, {
+      gearCollection: this.gearCollection,
+      controller: this
+    });
+  }
 });
 
 
