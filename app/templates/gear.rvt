@@ -3,8 +3,8 @@
   Add Gear
 </a>
 <div class="gear-list">
-  <div class="blocks" rv-each-gear="gearCollection">
-    <div class="gear-item">
+  <div class="blocks">
+    <div class="gear-item" rv-each-gear="gearCollection">
       <h4 rv-text="gear.name"></h4>
       <a rv-href="gear.id" route="#gear/:gearId/edit" class="edit">
         <i class="fa fa-pencil-square-o"></i>
