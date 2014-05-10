@@ -1,7 +1,7 @@
 'use strict';
 
 var Backbone = require('backbone');
-var gearTemplate = require('../templates/gear.hbs');
+var gearTemplate = require('../templates/gear.rvt');
 var GearCollection = require('../collections/gear-collection');
 
 var Gear = Backbone.View.extend({
@@ -18,9 +18,11 @@ var Gear = Backbone.View.extend({
   },
 
   insertView: function() {
-    var data = { gear: this.gearCollection.toJSON()};
+    // var data = {
+    //   gear: this.gearCollection.toJSON()
+    // };
 
-    this.$el.html(this.template(data));
+    this.$el.html(this.template);
   },
 });
 

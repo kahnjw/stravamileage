@@ -1,7 +1,7 @@
 'use strict';
 
 var Backbone = require('backbone');
-var loginTemplate = require('../templates/login.hbs');
+var loginTemplate = require('../templates/login.rvt');
 var session = require('../models/session');
 var $ = require('jquery');
 var _ = require('lodash');
@@ -17,7 +17,7 @@ var SessionView = Backbone.View.extend({
   },
 
   render: function() {
-    this.$el.html(this.template());
+    this.$el.html(this.template);
   },
 
   loggedIn: function() {

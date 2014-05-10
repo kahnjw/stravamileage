@@ -1,7 +1,7 @@
 'use strict';
 
 var Backbone = require('backbone');
-var createEditGearTemplate = require('../templates/create-edit-gear.hbs');
+var createEditGearTemplate = require('../templates/create-edit-gear.rvt');
 var GearModel = require('../models/gear-model');
 var $ = require('jquery');
 var _ = require('lodash');
@@ -32,7 +32,7 @@ var CreateEditGear = Backbone.View.extend({
       data = {gear: this.gearModel.toJSON()};
     }
 
-    this.$el.html(this.template(data));
+    this.$el.html(this.template);
   },
 
   saved: function() {

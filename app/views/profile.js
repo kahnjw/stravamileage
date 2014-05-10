@@ -1,9 +1,10 @@
 'use strict';
 
 var Backbone = require('backbone');
-var profileTemplate = require('../templates/profile.hbs');
+var profileTemplate = require('../templates/profile.rvt');
 var AccountModel = require('../models/account');
 var ActivitiesView = require('./activities');
+var rivets = require('rivets');
 
 var Profile = Backbone.View.extend({
   template: profileTemplate,
@@ -16,14 +17,13 @@ var Profile = Backbone.View.extend({
   },
 
   render: function() {
-    this.listenTo(this.account, 'change', this.insertView);
-    this.insertView();
-  },
+    this.$el.html(this.template);
 
-  insertView: function() {
-    var data = this.account.toJSON();
+    rivets.bind(this.$el, {
+      profile: this.account,
+      controller: this
+    });
 
-    this.$el.html(this.template(data));
     this.insertActivities();
   },
 

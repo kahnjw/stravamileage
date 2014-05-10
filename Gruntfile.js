@@ -1,6 +1,7 @@
 module.exports = function(grunt) {
   'use strict';
 
+  var stringify = require('stringify');
   require('load-grunt-tasks')(grunt);
 
   var testemConfig = grunt.file.readJSON('testem.json');
@@ -12,17 +13,13 @@ module.exports = function(grunt) {
         files: ['app/styles/less/**/*.less'],
         tasks: ['less:compile']
       },
-      handlebars: {
-        files: ['app/templates/**/*.hbs'],
-        tasks: ['handlebars']
-      },
       livereload: {
         options: { livereload: true },
         files: ['build/*', 'compiled_template/*']
       },
       browserify: {
         files: ['app/**/*.js'],
-        tasks: ['jshint', 'handlebars', 'browserify', 'testem']
+        tasks: ['jshint', 'browserify', 'testem']
       }
     },
     connect: {
@@ -70,14 +67,14 @@ module.exports = function(grunt) {
         src: ['app/**/*.js'],
         dest: 'build/stravamileage.js',
         options: {
-          transform: ['hbsfy']
+          transform: [stringify(['.rvt'])]
         }
       },
       testBundle: {
         src: ['tests/**/*.js'],
         dest: 'test-bundles/tests.js',
         options: {
-          transform: ['hbsfy']
+          transform: [stringify(['.rvt'])]
         }
       }
     },
@@ -91,21 +88,6 @@ module.exports = function(grunt) {
         files: {
           'app/styles/css/app.css': 'app/styles/less/app.less'
         }
-      }
-    },
-    handlebars: {
-      compile: {
-        options: {
-          amd: true,
-          namespace: false
-        },
-        files: [{
-          expand: true,
-          cwd: 'app/templates',
-          src: ['**/*.hbs'],
-          dest: 'compiled_templates/',
-          ext: '.js'
-        }]
       }
     },
     jshint: {
@@ -135,7 +117,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('default', [
     'less',
-    'handlebars',
+    'browserify:client',
     'watch'
   ]);
 
@@ -148,7 +130,7 @@ module.exports = function(grunt) {
   grunt.registerTask('build', [
     'less',
     'jshint',
-    'handlebars'
+    'browserify:client'
   ]);
 
   grunt.registerTask('server', function (target) {

@@ -3,7 +3,7 @@
     We need access to your strava account to get your mileage
   </h1>
   <a href="/api/v1/social-auth/login/strava">
-    <img src="images/ConnectWithStrava@2x.png" alt="Connect With Strava">
+    <img src="images/ConnectWithStrava@2x.png" alt="Connect With Strava" />
   </a>
   <p>
     We won't be sharing your information with anyone.

@@ -1,7 +1,7 @@
 <div class="profile-page">
-  <img src="{{profile}}" class="picture">
+  <img rv-src="profile.profile" class="picture">
   <div class="basic-info">
-    <h2>{{firstname}} {{lastname}}</h2><span>{{city}}, {{state}}</span>
+    <h2>{profile.firstname} {profile.lastname}</h2><span>{profile.city}, {profile.state}</span>
   </div>
   <div class="controls">
     <a href="#logout" class="logout">
