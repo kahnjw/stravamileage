@@ -40,3 +40,23 @@
     }
   }
 }
+
+@media only screen and (min-width: @xl) {
+  .activities {
+    .dash {
+      .max-speed, .average-speed, .elevation-gain, .distance {
+        width: 25%;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: @mid) {
+  .activities {
+    .dash {
+      .max-speed, .average-speed, .elevation-gain, .distance {
+        width: 100%;
+      }
+    }
+  }
+}

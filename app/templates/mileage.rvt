@@ -1,17 +1,17 @@
 <ul class="mileage-list">
   <li rv-each-mileage="mileages" class="gear {mileage.id}">
     <h2>{mileage.custom_name}</h2>
+    <h3>{mileage.mileage} of {mileage.lifetime} miles</h3>
     <div class="gear-specs">
       <span class="gear-type" rv-show="mileage.gear_name" rv-text="mileage.gear_name"></span>
       <span class="gear-manu" rv-show="mileage.manufacturer" rv-text="mileage.manufacturer"></span>
-      <span class="gear-shop" rv-show="mileage.shop" rv-text="mileage.shop"></span>
+      <span rv-show="mileage.shop">
+        Shop: <span class="gear-shop" rv-text="mileage.shop"></span>
+      </span>
     </div>
     <meter class="chart" rv-max="mileage.lifetime" rv-value="mileage.mileage">
-      <span class="chart-text">{mileage.mileage} of {mileage.lifetime} miles</span>
-      <div class="bar">
-        <i class="fa fa-exclamation-triangle"></i>
-      </div>
     </meter>
+
     <a href="#gear/{mileage.id}/edit" class="edit">
       <i class="fa fa-pencil-square-o"></i>
       Edit
