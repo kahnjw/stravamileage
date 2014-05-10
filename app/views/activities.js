@@ -2,8 +2,10 @@
 
 var Backbone = require('backbone');
 var ActivitiesCollection = require('../collections/activities');
-var activitiesTemplate = require('../templates/activities.hbs');
+var activitiesTemplate = require('../templates/activities.rvt');
 var _  = require('lodash');
+var rivets = require('rivets');
+
 
 var Activities = Backbone.View.extend({
   events: {
@@ -17,14 +19,12 @@ var Activities = Backbone.View.extend({
   },
 
   render: function() {
-    this.listenTo(this.activities, 'add', this.insertView);
-    this.insertView();
-  },
+    this.$el.html(this.template);
 
-  insertView: function() {
-    var data = { activities: this.activities.toJSON()};
-
-    this.$el.html(this.template(data));
+    rivets.bind(this.$el, {
+      activities: this.activities,
+      controller: this
+    });
   },
 
   refresh: function() {

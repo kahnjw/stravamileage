@@ -5,14 +5,14 @@
 <div class="headline">
   <h2>New Gear</h2>
 </div>
-<form class="create edit gear-create-edit">
+<form class="create edit gear-create-edit" rv-on-submit="controller>submit">
   <fieldset>
     <label for="name" class="control-label">Gear Name:</label>
-    <input name="name" type="text">
+    <input name="name" type="text" rv-value="gearItem.name" />
     <label for="untracked_mileage" class="control-label">Untracked Mileage:</label>
-    <input name="untracked_mileage" type="text">
+    <input name="untracked_mileage" type="text" rv-value="gearItem.untracked_mileage">
     <label for="lifetime" class="control-label">Lifetime:</label>
-    <input name="lifetime" type="text">
-    <button>Add</button>
+    <input name="lifetime" type="text" rv-value="gearItem.lifetime">
+    <button type="submit">Save</button>
   </fieldset>
 </form>

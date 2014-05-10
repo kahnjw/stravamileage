@@ -1,7 +1,7 @@
 'use strict';
 
 var Backbone = require('backbone');
-var pageTemplate = require('../templates/page.hbs');
+var pageTemplate = require('../templates/page.rvt');
 var UserMenu = require('./user-menu');
 
 var attachFastClick = require('fastclick');
@@ -11,7 +11,7 @@ var Page = Backbone.View.extend({
   template: pageTemplate,
 
   render: function() {
-    this.$el.html(this.template());
+    this.$el.html(this.template);
 
     this.userMenu = new UserMenu({el: '.user'});
     this.userMenu.render();

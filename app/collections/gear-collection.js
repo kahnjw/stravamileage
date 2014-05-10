@@ -8,4 +8,4 @@ var GearCollection = Backbone.Collection.extend({
   url: 'api/v1/gear/'
 });
 
-module.exports = GearCollection;
+module.exports = new GearCollection();

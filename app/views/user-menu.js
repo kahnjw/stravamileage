@@ -1,13 +1,13 @@
 'use strict';
 
 var Backbone = require('backbone');
-var userMenuTemplate = require('../templates/user-menu.hbs');
+var userMenuTemplate = require('../templates/user-menu.rvt');
 
 var UserMenu = Backbone.View.extend({
   template: userMenuTemplate,
 
   render: function() {
-    this.$el.html(this.template());
+    this.$el.html(this.template);
   },
 
   switchActive: function(menuName) {

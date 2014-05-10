@@ -1,8 +1,9 @@
 'use strict';
 
 var Backbone = require('backbone');
-var mileageTemplate = require('../templates/mileage.hbs');
+var mileageTemplate = require('../templates/mileage.rvt');
 var MileageCollection = require('../collections/mileage');
+var rivets = require('rivets');
 var $ = require('jquery');
 var _ = require('lodash');
 
@@ -15,16 +16,18 @@ var Mileage = Backbone.View.extend({
   },
 
   render: function() {
-    this.listenTo(this.collection, 'add', _.bind(this.insertView, this));
+    this.listenTo(this.collection, 'add', _.bind(this.drawGraphs, this));
     this.insertView();
   },
 
   insertView: function() {
-    var data = {
-      mileages: _.map(this.collection.models, this.modelToJson)
-    };
+    this.$el.html(this.template);
 
-    this.$el.html(this.template(data));
+    rivets.bind(this.$el, {
+      mileages: this.collection,
+      controller: this
+    });
+
     this.drawGraphs();
   },
 
