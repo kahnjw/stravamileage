@@ -1,10 +1,24 @@
-.activities {
+.activities-view {
   border-top: 2px solid @border;
   background-color: @light;
 
   h3 {
-    padding: 0.6em 0 0.3em 0;
+    padding: 0 0 0.3em 0;
     font-size: 120%;
+    float: left;
+    width: 80%;
+    box-sizing: border-box;
+  }
+
+  .edit-widgets {
+    width: 20%;
+    box-sizing: border-box;
+    text-align: right;
+    float: left;
+
+    a {
+      font-size: 1.3em;
+    }
   }
 
   .dash {
@@ -37,6 +51,26 @@
     .blocks {
       width: 100%;
       font-size: 0;
+    }
+  }
+}
+
+@media only screen and (min-width: @xl) {
+  .activities-view {
+    .dash {
+      .max-speed, .average-speed, .elevation-gain, .distance {
+        width: 25%;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: @mid) {
+  .activities-view {
+    .dash {
+      .max-speed, .average-speed, .elevation-gain, .distance {
+        width: 100%;
+      }
     }
   }
 }

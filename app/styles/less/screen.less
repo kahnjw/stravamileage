@@ -1,6 +1,10 @@
 @min-width: 300px;
 @max-width: 1200px;
 
+@mid: 400px;
+@large: 500px;
+@xl: 950px;
+
 body {
   margin: 0;
   padding: 0;
@@ -37,6 +41,25 @@ header {
       font-size: 34px;
     }
 
+    svg {
+      height: 34px;
+      width: 34px;
+      display: block;
+      margin: 0 auto;
+    }
+
+    svg path {
+      display: block;
+      transform: scale(0.065);
+      -webkit-transform: scale(0.065);
+      -webkit-transform-origin-x: 0;
+      -webkit-transform-origin-y: 0;
+
+      -moz-transform: scale(0.065);
+      -moz-transform-origin-x: 0;
+      -moz-transform-origin-y: 0;
+    }
+
     span {
       display: block;
     }
@@ -58,104 +81,6 @@ header {
     }
 
     .clearboth;
-  }
-}
-
-@chart-height: 3em;
-
-.mileage-list {
-  h2 {
-    display: inline-block;
-    margin-bottom: 0.5em;
-  }
-
-  .gear-specs {
-    float: right;
-    .clearboth;
-
-    span {
-      font-size: 12px;
-      color: #888;
-      padding: 0.4em;
-    }
-  }
-
-  li {
-    padding: 2em;
-    margin: 1em 0;
-    border-bottom: 1px @border solid;
-
-    .chart {
-      background: @dark;
-      border: 3px solid #aaa;
-      height: @chart-height;
-      border-radius: 2em;
-    }
-
-    .chart-text {
-      position: absolute;
-      padding: 0.9em;
-      color: @base;
-    }
-
-    .bar {
-      background: @orange;
-      height: @chart-height;
-      display: block;
-      min-width: 3em;
-      border-radius: 2em;
-
-      i {
-        float: right;
-        padding: 0.5em;
-        font-size: 24px;
-        color: @base;
-      }
-    }
-
-    .delete, .edit {
-      padding: 1em 1em 0 0;
-      display: inline-block;
-    }
-  }
-}
-
-.profile-page {
-  color: #888;
-
-  .basic-info {
-    float: left;
-    padding: 3.4em 0.5em;
-  }
-
-  h2 {
-    font-size: 20px;
-    color: #aaa;
-  }
-
-  .controls {
-    float: right;
-    color: #888;
-    font-size: 20px;
-    padding: 3.5em 0.5em;
-    text-align: center;
-    a {padding: 0 0.6em}
-
-    i {display: inline-block;}
-    .clearboth;
-  }
-
-  .picture {
-    float: left;
-    display: inline-block;
-    border-radius: 50%;
-    margin: 1.5em;
-    width: 8em;
-    height: auto;
-  }
-
-  .logout:hover {
-    color: @orange;
   }
 }
 
@@ -207,37 +132,6 @@ header {
   }
 }
 
-.gear-list {
-  border-top: 2px solid @border;
-  background-color: @light;
-
-  .gear-item {
-    background-color: @base;
-    border: 1px solid @border;
-    padding: 0.5em;
-    margin: 0;
-    width: 50%;
-    box-sizing: border-box;
-    display: inline-block;
-    font-size: 16px;
-    h4 {
-      font-size: 18px;
-    }
-    a {
-      color: @base-font;
-      padding: 0.5em 0.5em 0 0;
-      display: inline-block;
-    }
-    a:hover {
-      color: @orange;
-    }
-  }
-  .blocks {
-    width: 100%;
-    font-size: 0;
-  }
-}
-
 .edit, .create {
   input {
     display: block;
@@ -258,5 +152,13 @@ header {
 
   h1, h2, h3, h4 {
     font-size: 2em;
+  }
+}
+
+@media only screen and (min-width: @max-width) {
+  .page{
+    border-left: @border 2px solid;
+    border-right: @border 2px solid;
+    border-bottom: @border 2px solid;
   }
 }

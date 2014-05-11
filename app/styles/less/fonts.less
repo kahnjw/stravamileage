@@ -8,8 +8,18 @@ a {
   text-decoration: none;
 }
 
+svg path {
+  fill: #000;
+  stroke: #000;
+}
+
 a:hover, a.active, a:active {
   color: @orange;
+}
+
+a:hover svg path, a.active svg path, a:active svg path {
+  fill: @orange;
+  stroke: @orange;
 }
 
 h1, h2, h3, h4 {

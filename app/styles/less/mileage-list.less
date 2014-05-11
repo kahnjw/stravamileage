@@ -1,0 +1,129 @@
+@chart-height: 3em;
+
+.meter-bar {
+  box-shadow: 0 5px 5px -5px #999 inset;
+  background: @orange;
+  border-radius: 2em;
+  min-width: 2.5em;
+}
+
+.mileage-list {
+  meter {
+    width: 100%;
+  }
+
+  meter::-webkit-meter-bar {
+    background: none;
+  }
+
+  meter::-moz-meter-bar {
+    .meter-bar;
+  }
+
+  meter::-webkit-meter-optimum-value {
+    .meter-bar;
+  }
+
+  meter::-webkit-meter-inner-element {
+    display: block;
+  }
+
+  h2, h3 {
+    display: block;
+    text-align: center;
+    margin-bottom: 0.5em;
+    font-size: 1.0em;
+  }
+
+  h2 {
+    font-size: 1.3em;
+  }
+
+  .gear-specs {
+
+    display: block;
+    text-align: center;
+    span {
+      font-size: 0.8em;
+      color: #888;
+      padding: 0.4em;
+    }
+  }
+
+  li {
+    padding: 0.4em;
+    margin: 1em 0;
+    border-bottom: 1px @border solid;
+
+    .chart {
+      background: @dark;
+      border: 3px solid #aaa;
+      height: @chart-height;
+      border-radius: 2em;
+    }
+
+    .chart-text {
+      position: absolute;
+      padding: 0.9em;
+      color: @base;
+    }
+
+    .bar {
+      height: @chart-height;
+      display: block;
+
+      i {
+        float: right;
+        padding: 0.5em;
+        font-size: 24px;
+        color: @base;
+      }
+    }
+
+    .delete, .edit {
+      padding: 1em 1em 0 0;
+      display: inline-block;
+    }
+  }
+}
+
+@media only screen and (min-width: @mid){
+  .mileage-list {
+    li {
+      padding: 1em;
+    }
+
+    h2, h3 {
+      display: inline-block;
+      font-size: 1.2em;
+      box-sizing: border-box;
+      width: 49%;
+    }
+
+    h3 {
+      text-align: right;
+      margin-bottom: 0;
+    }
+
+    h2 {
+      text-align: left;
+      font-size: 1.5em;
+    }
+  }
+}
+
+@media only screen and (min-width: @large){
+  .mileage-list {
+    li {
+      padding: 2em;
+    }
+
+    h3 {
+      font-size: 1.4em;
+    }
+
+    h2 {
+      font-size: 1.6em;
+    }
+  }
+}

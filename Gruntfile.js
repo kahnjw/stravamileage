@@ -67,14 +67,14 @@ module.exports = function(grunt) {
         src: ['app/**/*.js'],
         dest: 'build/stravamileage.js',
         options: {
-          transform: [stringify(['.rvt'])]
+          transform: [stringify(['.rvt', '.svg'])]
         }
       },
       testBundle: {
         src: ['tests/**/*.js'],
         dest: 'test-bundles/tests.js',
         options: {
-          transform: [stringify(['.rvt'])]
+          transform: [stringify(['.rvt', '.svg'])]
         }
       }
     },

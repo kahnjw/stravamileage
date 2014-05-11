@@ -3,7 +3,6 @@
 var Backbone = require('backbone');
 var profileTemplate = require('../templates/profile.rvt');
 var AccountModel = require('../models/account');
-var ActivitiesView = require('./activities');
 var rivets = require('rivets');
 
 var Profile = Backbone.View.extend({
@@ -12,8 +11,6 @@ var Profile = Backbone.View.extend({
   initialize: function() {
     this.account = new AccountModel();
     this.account.fetch();
-
-    this.activities = new ActivitiesView();
   },
 
   render: function() {
@@ -23,13 +20,6 @@ var Profile = Backbone.View.extend({
       profile: this.account,
       controller: this
     });
-
-    this.insertActivities();
-  },
-
-  insertActivities: function() {
-    this.activities.setElement('.activities');
-    this.activities.render();
   }
 });
 

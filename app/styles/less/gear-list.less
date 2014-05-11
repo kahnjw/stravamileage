@@ -1,0 +1,55 @@
+.gear-list {
+  border-top: 2px solid @border;
+  background-color: @light;
+
+  .gear-item {
+    background-color: @base;
+    border: 1px solid @border;
+    padding: 0.5em;
+    margin: 0;
+    width: 50%;
+    box-sizing: border-box;
+    display: inline-block;
+    font-size: 16px;
+    h4 {
+      font-size: 18px;
+    }
+    a {
+      color: @base-font;
+      padding: 0.5em 0.5em 0 0;
+      display: inline-block;
+    }
+    a:hover {
+      color: @orange;
+    }
+  }
+  .blocks {
+    width: 100%;
+    font-size: 0;
+  }
+}
+
+@media only screen and (min-width: 750px) {
+  .gear-list {
+    .gear-item {
+      width: 33.33%;
+    }
+  }
+}
+
+@media only screen and (min-width: @xl) {
+  .gear-list {
+    .gear-item {
+      width: 25%;
+    }
+  }
+}
+
+@media only screen and (max-width: @mid) {
+  .gear-list {
+    .gear-item {
+      width: 100%;
+    }
+  }
+}
+

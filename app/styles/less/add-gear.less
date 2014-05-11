@@ -1,0 +1,62 @@
+.add-gear {
+  padding: 0 0.4em;
+
+  h2 {
+    text-align: center;
+    font-size: 1.8em;
+    margin: 0.5em 0;
+  }
+
+  h3 {
+    text-align: center;
+    margin: 0.5em 0;
+  }
+
+  label {
+    display: inline-block;
+  }
+
+  .gear-item {
+    width: 50%;
+    box-sizing: border-box;
+    padding: 0.5em;
+    display: inline-block;
+  }
+
+  .checkbox {
+    -webkit-appearance: none;
+    background-color: #eee;
+    border: 2px solid #ccc;
+    box-shadow: none;
+    padding: 9px;
+    border-radius: 3px;
+    float: left;
+    position: relative;
+    margin: 0 0.5em 0 0;
+  }
+
+  .checkbox:active, .checkbox:checked:active {
+    box-shadow: none;
+  }
+
+  .checkbox:checked {
+    box-shadow: none;
+  }
+
+  .checkbox:checked:after {
+    content: '\2714';
+    font-size: 14px;
+    position: absolute;
+    top: 0px;
+    left: 3px;
+    color: @orange;
+  }
+}
+
+@media only screen and (max-width: @large) {
+  .add-gear {
+    .gear-item {
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,12 @@
+<section class="add-gear">
+  <h2 rv-text="activity.name"></h2>
+  <h3>Add Gear for this Activity</h3>
+  <form rv-on-submit="controller>submit">
+    <div class="gear-item" rv-each-gearitem="gear">
+      <input class="checkbox" rv-value="gearitem.added" rv-text="gearitem.name" type="checkbox" rv-checked="gearitem.added">
+      <label rv-text="gearitem.name"></label>
+    </div>
+
+    <button class="simple-button" type="submit">Save</button>
+  </form>
+</section>
