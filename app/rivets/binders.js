@@ -15,3 +15,7 @@ rivets.binders.href = function (el, value) {
 
   el.setAttribute('href', href);
 };
+
+rivets.binders.contents = function(el, value) {
+  el.innerHTML = value;
+};

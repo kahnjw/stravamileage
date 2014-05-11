@@ -262,17 +262,35 @@ header nav i {
   font-size: 34px;
 }
 /* line 44, /Users/kahnjw/Documents/stravamileage/app/styles/less/screen.less */
+header nav svg {
+  height: 34px;
+  width: 34px;
+  display: block;
+  margin: 0 auto;
+}
+/* line 51, /Users/kahnjw/Documents/stravamileage/app/styles/less/screen.less */
+header nav svg path {
+  display: block;
+  transform: scale(0.065);
+  -webkit-transform: scale(0.065);
+  -webkit-transform-origin-x: 0;
+  -webkit-transform-origin-y: 0;
+  -moz-transform: scale(0.065);
+  -moz-transform-origin-x: 0;
+  -moz-transform-origin-y: 0;
+}
+/* line 63, /Users/kahnjw/Documents/stravamileage/app/styles/less/screen.less */
 header nav span {
   display: block;
 }
-/* line 48, /Users/kahnjw/Documents/stravamileage/app/styles/less/screen.less */
+/* line 67, /Users/kahnjw/Documents/stravamileage/app/styles/less/screen.less */
 header nav li {
   float: left;
   width: 25%;
   padding: 1em 0;
   text-align: center;
 }
-/* line 55, /Users/kahnjw/Documents/stravamileage/app/styles/less/screen.less */
+/* line 74, /Users/kahnjw/Documents/stravamileage/app/styles/less/screen.less */
 header nav a {
   width: 4.5em;
   height: 2.5em;
@@ -299,21 +317,21 @@ header nav:after {
   clear: both;
   height: 0;
 }
-/* line 68, /Users/kahnjw/Documents/stravamileage/app/styles/less/screen.less */
+/* line 87, /Users/kahnjw/Documents/stravamileage/app/styles/less/screen.less */
 .profile-page {
   color: #888;
 }
-/* line 71, /Users/kahnjw/Documents/stravamileage/app/styles/less/screen.less */
+/* line 90, /Users/kahnjw/Documents/stravamileage/app/styles/less/screen.less */
 .profile-page .basic-info {
   float: left;
   padding: 3.4em 0.5em;
 }
-/* line 76, /Users/kahnjw/Documents/stravamileage/app/styles/less/screen.less */
+/* line 95, /Users/kahnjw/Documents/stravamileage/app/styles/less/screen.less */
 .profile-page h2 {
   font-size: 20px;
   color: #aaa;
 }
-/* line 81, /Users/kahnjw/Documents/stravamileage/app/styles/less/screen.less */
+/* line 100, /Users/kahnjw/Documents/stravamileage/app/styles/less/screen.less */
 .profile-page .controls {
   float: right;
   color: #888;
@@ -321,11 +339,11 @@ header nav:after {
   padding: 3.5em 0.5em;
   text-align: center;
 }
-/* line 87, /Users/kahnjw/Documents/stravamileage/app/styles/less/screen.less */
+/* line 106, /Users/kahnjw/Documents/stravamileage/app/styles/less/screen.less */
 .profile-page .controls a {
   padding: 0 0.6em;
 }
-/* line 89, /Users/kahnjw/Documents/stravamileage/app/styles/less/screen.less */
+/* line 108, /Users/kahnjw/Documents/stravamileage/app/styles/less/screen.less */
 .profile-page .controls i {
   display: inline-block;
 }
@@ -347,7 +365,7 @@ header nav:after {
   clear: both;
   height: 0;
 }
-/* line 93, /Users/kahnjw/Documents/stravamileage/app/styles/less/screen.less */
+/* line 112, /Users/kahnjw/Documents/stravamileage/app/styles/less/screen.less */
 .profile-page .picture {
   float: left;
   display: inline-block;
@@ -356,11 +374,11 @@ header nav:after {
   width: 8em;
   height: auto;
 }
-/* line 102, /Users/kahnjw/Documents/stravamileage/app/styles/less/screen.less */
+/* line 121, /Users/kahnjw/Documents/stravamileage/app/styles/less/screen.less */
 .profile-page .logout:hover {
   color: #f73308;
 }
-/* line 108, /Users/kahnjw/Documents/stravamileage/app/styles/less/screen.less */
+/* line 127, /Users/kahnjw/Documents/stravamileage/app/styles/less/screen.less */
 .more-list a {
   text-decoration: none;
   font-size: 24px;
@@ -368,29 +386,29 @@ header nav:after {
   display: block;
   border-bottom: 1px solid #dddddd;
 }
-/* line 116, /Users/kahnjw/Documents/stravamileage/app/styles/less/screen.less */
+/* line 135, /Users/kahnjw/Documents/stravamileage/app/styles/less/screen.less */
 .more-list a:hover,
 .more-list a:active {
   color: #f73308;
 }
-/* line 120, /Users/kahnjw/Documents/stravamileage/app/styles/less/screen.less */
+/* line 139, /Users/kahnjw/Documents/stravamileage/app/styles/less/screen.less */
 .more-list i {
   margin-right: 1em;
 }
-/* line 125, /Users/kahnjw/Documents/stravamileage/app/styles/less/screen.less */
+/* line 144, /Users/kahnjw/Documents/stravamileage/app/styles/less/screen.less */
 .connect,
 .login,
 .signup {
   padding: 2em 0;
   font-size: 12px;
 }
-/* line 129, /Users/kahnjw/Documents/stravamileage/app/styles/less/screen.less */
+/* line 148, /Users/kahnjw/Documents/stravamileage/app/styles/less/screen.less */
 .connect h1,
 .login h1,
 .signup h1 {
   font-size: 18px;
 }
-/* line 133, /Users/kahnjw/Documents/stravamileage/app/styles/less/screen.less */
+/* line 152, /Users/kahnjw/Documents/stravamileage/app/styles/less/screen.less */
 .connect h1,
 .login h1,
 .signup h1,
@@ -399,7 +417,7 @@ header nav:after {
 .signup p {
   text-align: center;
 }
-/* line 137, /Users/kahnjw/Documents/stravamileage/app/styles/less/screen.less */
+/* line 156, /Users/kahnjw/Documents/stravamileage/app/styles/less/screen.less */
 .connect img,
 .login img,
 .signup img {
@@ -407,13 +425,13 @@ header nav:after {
   margin: 0 auto;
   padding: 2em 0 1em 0;
 }
-/* line 144, /Users/kahnjw/Documents/stravamileage/app/styles/less/screen.less */
+/* line 163, /Users/kahnjw/Documents/stravamileage/app/styles/less/screen.less */
 .login,
 .signup {
   width: 70%;
   margin: 0 auto;
 }
-/* line 148, /Users/kahnjw/Documents/stravamileage/app/styles/less/screen.less */
+/* line 167, /Users/kahnjw/Documents/stravamileage/app/styles/less/screen.less */
 .login input[type=text],
 .signup input[type=text],
 .login input[type=password],
@@ -422,14 +440,14 @@ header nav:after {
   display: block;
   width: 93%;
 }
-/* line 156, /Users/kahnjw/Documents/stravamileage/app/styles/less/screen.less */
+/* line 175, /Users/kahnjw/Documents/stravamileage/app/styles/less/screen.less */
 .edit input,
 .create input {
   display: block;
   width: 100%;
   box-sizing: border-box;
 }
-/* line 163, /Users/kahnjw/Documents/stravamileage/app/styles/less/screen.less */
+/* line 182, /Users/kahnjw/Documents/stravamileage/app/styles/less/screen.less */
 .headline {
   display: inline-block;
   box-sizing: border-box;
@@ -440,7 +458,7 @@ header nav:after {
   position: absolute;
   top: 0;
 }
-/* line 173, /Users/kahnjw/Documents/stravamileage/app/styles/less/screen.less */
+/* line 192, /Users/kahnjw/Documents/stravamileage/app/styles/less/screen.less */
 .headline h1,
 .headline h2,
 .headline h3,
@@ -448,7 +466,7 @@ header nav:after {
   font-size: 2em;
 }
 @media only screen and (min-width: 1200px) {
-  /* line 179, /Users/kahnjw/Documents/stravamileage/app/styles/less/screen.less */
+  /* line 198, /Users/kahnjw/Documents/stravamileage/app/styles/less/screen.less */
   .page {
     border-left: #dddddd 2px solid;
     border-right: #dddddd 2px solid;
@@ -466,12 +484,24 @@ a {
   text-decoration: none;
 }
 /* line 11, /Users/kahnjw/Documents/stravamileage/app/styles/less/fonts.less */
+svg path {
+  fill: #000;
+  stroke: #000;
+}
+/* line 16, /Users/kahnjw/Documents/stravamileage/app/styles/less/fonts.less */
 a:hover,
 a.active,
 a:active {
   color: #f73308;
 }
-/* line 15, /Users/kahnjw/Documents/stravamileage/app/styles/less/fonts.less */
+/* line 20, /Users/kahnjw/Documents/stravamileage/app/styles/less/fonts.less */
+a:hover svg path,
+a.active svg path,
+a:active svg path {
+  fill: #f73308;
+  stroke: #f73308;
+}
+/* line 25, /Users/kahnjw/Documents/stravamileage/app/styles/less/fonts.less */
 h1,
 h2,
 h3,
@@ -972,7 +1002,7 @@ button:hover {
   left: 3px;
   color: #f73308;
 }
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 500px) {
   /* line 58, /Users/kahnjw/Documents/stravamileage/app/styles/less/add-gear.less */
   .add-gear .gear-item {
     width: 100%;
