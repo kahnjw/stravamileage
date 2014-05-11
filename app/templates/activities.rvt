@@ -5,6 +5,12 @@
   <li rv-each-activity="activities">
     <div class="dash">
       <h3 rv-text="activity.name"></h3>
+      <div class="edit-widgets">
+        <a class="add-gear" rv-href="activity.id" route="#activities/:activityId/addgear">
+          <i class="fa fa-plus"></i>
+        </a>
+      </div>
+      <div class="clearboth"></div>
       <ul class="activity-details">
         <li class="location">
           <i class="fa fa-map-marker"></i>

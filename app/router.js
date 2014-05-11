@@ -11,6 +11,7 @@ var globalEvents = require('./global-events');
 var csrf = require('./helpers/csrf');
 var CreateEditGear = require('./views/create-edit-gear');
 var LoginView = require('./views/login');
+var AddGearView = require('./views/add-gear');
 
 var Router = Backbone.Router.extend({
   routes: {
@@ -19,6 +20,7 @@ var Router = Backbone.Router.extend({
     '(/)mileage(/)': 'mileage',
     '(/)profile(/)': 'profile',
     '(/)gear/:gearId/edit(/)': 'createEditGear',
+    '(/)activities/:activityId/addgear(/)': 'addGearToActivity',
     '(/)gear/create(/)': 'createEditGear',
     '(/)gear(/)': 'gear',
     '(/)more(/)': 'more',
@@ -40,6 +42,7 @@ var Router = Backbone.Router.extend({
     this.gear = new Gear();
     this.createEditGear = new CreateEditGear();
     this.login = new LoginView();
+    this.addGear = new AddGearView();
 
     this.wireRoutingEvents();
 
@@ -70,10 +73,13 @@ var Router = Backbone.Router.extend({
     this.setup('gear');
   },
 
+  addGearToActivity: function(activityId) {
+    this.addGear.getActivity(activityId);
+    this.setup('addGear');
+  },
+
   createEditGear: function(gearId) {
-    if(gearId) {
-      this.createEditGear.getModel(gearId);
-    }
+    this.createEditGear.getModel(gearId);
 
     this.setup('createEditGear');
   },
@@ -83,15 +89,22 @@ var Router = Backbone.Router.extend({
   },
 
   setup: function(viewName, hideMenu) {
+    if(this.currentView && this.currentView.clean) {
+      this.currentView.clean();
+    }
+
     if(hideMenu) {
       this.page.hideMenu();
     } else {
       this.page.showMenu();
     }
+
     this.page.updateMenu(viewName);
     this[viewName].setElement('.back');
     this[viewName].render();
     this.page.swapFrontBack();
+
+    this.currentView = this[viewName];
   },
 
   enter: function() {

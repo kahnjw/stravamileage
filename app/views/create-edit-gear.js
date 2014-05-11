@@ -16,7 +16,7 @@ var CreateEditGear = Backbone.View.extend({
     this.gearCollection = gearCollection;
   },
 
-  render: function(gearId) {
+  render: function() {
     this.$el.html(this.template);
 
     rivets.bind(this.$el, {
@@ -26,10 +26,16 @@ var CreateEditGear = Backbone.View.extend({
   },
 
   getModel: function(gearId) {
-    if(gearId) {
-      this.gearModel = this.gearCollection.get(gearId);
-    } else {
+    if(!gearId) {
       this.gearModel = new GearModel();
+      return;
+    }
+
+    this.gearModel = this.gearCollection.get(gearId);
+
+    if(!this.gearModel) {
+      this.gearModel = new GearModel({id: gearId});
+      this.gearModel.fetch();
     }
   },
 
@@ -48,6 +54,5 @@ var CreateEditGear = Backbone.View.extend({
       .fail(_.bind(this.error, this));
   }
 });
-
 
 module.exports = CreateEditGear;

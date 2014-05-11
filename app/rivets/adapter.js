@@ -21,7 +21,7 @@ dotAdapter.subscribe = function(object, keypath, callback) {
 
   if(keypath && object[keypath] instanceof Backbone.Model) {
     object[keypath].on('add remove change model', function() {
-      callback(object[keypath].models);
+      callback(object[keypath]);
     });
     return;
   }
