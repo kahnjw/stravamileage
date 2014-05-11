@@ -12,6 +12,7 @@ var csrf = require('./helpers/csrf');
 var CreateEditGear = require('./views/create-edit-gear');
 var LoginView = require('./views/login');
 var AddGearView = require('./views/add-gear');
+var ActivitiesView = require('./views/activities');
 
 var Router = Backbone.Router.extend({
   routes: {
@@ -23,6 +24,7 @@ var Router = Backbone.Router.extend({
     '(/)activities/:activityId/addgear(/)': 'addGearToActivity',
     '(/)gear/create(/)': 'createEditGear',
     '(/)gear(/)': 'gear',
+    '(/)activities(/)': 'activities',
     '(/)more(/)': 'more',
     '(/)login(/)': 'login'
   },
@@ -43,6 +45,7 @@ var Router = Backbone.Router.extend({
     this.createEditGear = new CreateEditGear();
     this.login = new LoginView();
     this.addGear = new AddGearView();
+    this.activities = new ActivitiesView();
 
     this.wireRoutingEvents();
 
@@ -51,6 +54,10 @@ var Router = Backbone.Router.extend({
 
   root: function() {
     this.navigate('mileage', true);
+  },
+
+  activities: function() {
+    this.setup('activities');
   },
 
   authenticate: function() {

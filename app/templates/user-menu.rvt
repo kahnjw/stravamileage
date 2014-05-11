@@ -13,9 +13,9 @@
       </a>
     </li>
     <li>
-      <a href="#gear" class="gear">
+      <a href="#activities" class="activities">
         <svg rv-contents="activitiesIcon"></i>
-        <span>Gear</span>
+        <span>Activities</span>
       </a>
     </li>
     <li>
