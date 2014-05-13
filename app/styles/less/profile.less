@@ -1,26 +1,23 @@
 .profile-page {
-  color: #888;
+  color: #aaa;
   text-align: center;
 
   .basic-info {
     padding: 0.6em 0.5em;
   }
 
-  h2 {
+  h1 {
     font-size: 2.5em;
-    color: #aaa;
   }
 
-  .controls {
-    float: right;
-    color: #888;
-    font-size: 20px;
-    padding: 3.5em 0.5em;
-    text-align: center;
-    a {padding: 0 0.6em}
+  h2 {
+    font-size: 2em;
+  }
 
-    i {display: inline-block;}
-    .clearboth;
+  .controls a {
+    margin: 0.5em 0;
+    display: block;
+    color: #aaa;
   }
 
   .picture {
@@ -28,9 +25,13 @@
     border-radius: 50%;
     width: 50%;
     height: 50%;
-    margin: 1.5em auto;
+    margin: 1.5em auto 0 auto;
     height: auto;
     border: 0.2em solid @border;
+  }
+
+  .bio {
+    padding: 1em;
   }
 
   .logout:hover {
