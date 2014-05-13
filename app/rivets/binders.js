@@ -22,13 +22,15 @@ rivets.binders.contents = function(el, value) {
 };
 
 rivets.binders.error = function(el, value) {
+  var $el = $(el);
+
   if(value) {
     el.innerHTML = value;
-    el.style.display = 'block';
+    $el.addClass('open');
     return;
   }
-
-  el.style.display = 'none';
+  el.innerHTML = '';
+  $el.removeClass('open');
 };
 
 rivets.binders.errorclass = function(el, value) {
