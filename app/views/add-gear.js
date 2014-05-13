@@ -60,7 +60,7 @@ var AddGear = Backbone.View.extend({
   saved: function(model, status, jqXHR) {
     this.gearCollection.fetch();
 
-    window.location.hash = '#profile';
+    window.location.hash = '#activities';
   },
 
   error: function() {
