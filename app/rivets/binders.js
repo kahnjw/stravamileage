@@ -1,5 +1,6 @@
 'use strict';
 
+var $ = require('jquery');
 var rivets = require('rivets');
 
 
@@ -18,4 +19,25 @@ rivets.binders.href = function (el, value) {
 
 rivets.binders.contents = function(el, value) {
   el.innerHTML = value;
+};
+
+rivets.binders.error = function(el, value) {
+  if(value) {
+    el.innerHTML = value;
+    el.style.display = 'block';
+    return;
+  }
+
+  el.style.display = 'none';
+};
+
+rivets.binders.errorclass = function(el, value) {
+  var $el = $(el);
+
+  if(value) {
+    $el.addClass('inputError');
+    return;
+  }
+
+  $el.removeClass('inputError');
 };

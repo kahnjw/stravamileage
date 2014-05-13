@@ -44,8 +44,9 @@ var CreateEditGear = Backbone.View.extend({
     window.location.hash = '#gear';
   },
 
-  error: function() {
-    window.location.hash = '#error';
+  error: function(promise, error, status) {
+    this.gearModel.unset('errors');
+    this.gearModel.set('errors', promise.responseJSON);
   },
 
   submit: function(event, target, binding) {
