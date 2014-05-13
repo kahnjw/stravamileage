@@ -8,7 +8,7 @@
         <h3 rv-text="activity.name"></h3>
         <div class="edit-widgets">
           <a class="add-gear" rv-href="activity.id" route="#activities/:activityId/addgear">
-            <i class="fa fa-plus"></i>
+            <i class="fa fa-plus"></i> Add Gear
           </a>
         </div>
         <div class="clearboth"></div>
