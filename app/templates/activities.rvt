@@ -31,7 +31,6 @@
             <i class="fa fa-flag-checkered"></i>
             <h4>Distance</h4>
             <span rv-text="activity.distance | miles"></span>
-            <div class="clearboth"></div>
           </div>
           <div class="elevation-gain">
             <i class="fa fa-arrow-circle-up"></i>
@@ -39,23 +38,19 @@
             <span>
               <span rv-text="activity.total_elevation_gain | feet"></span>
             </span>
-            <div class="clearboth"></div>
           </div>
           <div class="max-speed">
             <i class="fa fa-fighter-jet"></i>
             <h4>Max Speed</h4>
             <span rv-text="activity.max_speed | milesPerHour"></span>
-            <div class="clearboth"></div>
           </div>
           <div class="average-speed">
             <i class="fa fa-tachometer"></i>
             <h4>Average Speed</h4>
             <span rv-text="activity.average_speed | milesPerHour"></span>
-            <div class="clearboth"></div>
           </div>
         </div>
       </div>
     </li>
-    <div class="clearboth"></div>
   </ul>
 </div>
