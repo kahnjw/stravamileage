@@ -36,7 +36,20 @@ dotAdapter.subscribe = function(object, keypath, callback) {
 };
 
 dotAdapter.unsubscribe = function(object, keypath, callback) {
+  if(keypath && object[keypath] instanceof Backbone.Collection) {
+    object[keypath].off('add remove');
+    return;
+  }
 
+  if(keypath && object[keypath] instanceof Backbone.Model) {
+    object[keypath].off('add remove change model');
+    return;
+  }
+
+  if(object.on) {
+    object.off('change:' + keypath);
+    return;
+  }
 };
 
 dotAdapter.read = function(object, keypath) {

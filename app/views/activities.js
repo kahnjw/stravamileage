@@ -21,7 +21,7 @@ var Activities = Backbone.View.extend({
   render: function() {
     this.$el.html(this.template);
 
-    rivets.bind(this.$el, {
+    this.rivet = rivets.bind(this.$el, {
       activities: this.activities,
       controller: this
     });
@@ -41,6 +41,10 @@ var Activities = Backbone.View.extend({
 
   done: function() {
     this.$el.find('.simple-button i').removeClass('spin');
+  },
+
+  clean: function() {
+    this.rivet.unbind();
   }
 });
 

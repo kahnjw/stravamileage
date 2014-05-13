@@ -24,7 +24,7 @@ var AddGear = Backbone.View.extend({
     this.gearCollection.on('add', this.checkOverlap, this);
     this.$el.html(this.template);
 
-    rivets.bind(this.$el, {
+    this.rivet = rivets.bind(this.$el, {
       activity: this.activity,
       gear: gearCollection,
       controller: this
@@ -89,6 +89,8 @@ var AddGear = Backbone.View.extend({
     _.each(this.gearCollection.models, function(gearItem) {
       gearItem.unset('added');
     });
+
+    this.rivet.unbind();
   }
 });
 
