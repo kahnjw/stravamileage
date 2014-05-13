@@ -32,7 +32,6 @@ dotAdapter.subscribe = function(object, keypath, callback) {
     });
     return;
   }
-  console.log(keypath + ' . subscribe no-op');
 };
 
 dotAdapter.unsubscribe = function(object, keypath, callback) {
@@ -82,9 +81,7 @@ rivets.adapters['>'] = {};
 
 var funcAdapter = rivets.adapters['>'];
 
-funcAdapter.subscribe = function(object, keypath, callback) {
-  console.log(keypath + ' > subscribe no-op');
-};
+funcAdapter.subscribe = function(object, keypath, callback) {};
 
 funcAdapter.read = function(object, keypath) {
   // Because > is used for function calls, we must bind the call to the object
