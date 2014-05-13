@@ -11,7 +11,7 @@ var globalEvents = require('./global-events');
 var csrf = require('./helpers/csrf');
 var CreateEditGear = require('./views/create-edit-gear');
 var LoginView = require('./views/login');
-var AddGearView = require('./views/add-gear');
+var AddGearToActivityView = require('./views/add-gear-to-activity');
 var ActivitiesView = require('./views/activities');
 
 var Router = Backbone.Router.extend({
@@ -44,7 +44,7 @@ var Router = Backbone.Router.extend({
     this.gear = new Gear();
     this.createEditGear = new CreateEditGear();
     this.login = new LoginView();
-    this.addGear = new AddGearView();
+    this.addGearToActivityView = new AddGearToActivityView();
     this.activities = new ActivitiesView();
 
     this.wireRoutingEvents();
@@ -81,8 +81,8 @@ var Router = Backbone.Router.extend({
   },
 
   addGearToActivity: function(activityId) {
-    this.addGear.getActivity(activityId);
-    this.setup('addGear');
+    this.addGearToActivityView.getActivity(activityId);
+    this.setup('addGearToActivityView');
   },
 
   createEditGear: function(gearId) {

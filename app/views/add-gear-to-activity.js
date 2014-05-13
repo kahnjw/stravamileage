@@ -9,7 +9,7 @@ var rivets = require('rivets');
 var _ = require('lodash');
 
 
-var AddGear = Backbone.View.extend({
+var AddGearToActivity = Backbone.View.extend({
   template: createEditGearTemplate,
 
   initialize: function() {
@@ -94,4 +94,4 @@ var AddGear = Backbone.View.extend({
   }
 });
 
-module.exports = AddGear;
+module.exports = AddGearToActivity;
