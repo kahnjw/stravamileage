@@ -1,5 +1,9 @@
+<a class="simple-button" href="#gear/create">
+  <i class="fa fa-plus"></i>
+  Add Gear
+</a>
 <ul class="mileage-list">
-  <li rv-each-mileage="mileages" class="gear {mileage.id}">
+  <li rv-each-mileage="mileages" class="gear">
     <h2>{mileage.name}</h2>
     <h3>{mileage.total_mileage} of {mileage.lifetime} miles</h3>
     <div class="gear-specs">
