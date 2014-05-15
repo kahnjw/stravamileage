@@ -1,0 +1,21 @@
+.fieldError {
+  background: @danger-red;
+  padding: 0 1em;
+  color: #fff;
+  margin: 1em 0;
+  border-radius: 0.7em;
+  max-height: 0;
+  transition-duration: 0.1s;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(.6,.39,.61,1.31);
+  box-sizing: border-box;
+}
+
+.fieldError.open {
+  max-height: 500px; /* approximate max height */
+  padding: 1em;
+}
+
+.inputError {
+  border-color: @danger-red;
+}

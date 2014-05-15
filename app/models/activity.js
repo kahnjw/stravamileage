@@ -8,6 +8,10 @@ var Activity = Backbone.Model.extend({
       return '/api/v1/activities/' + this.get('id') + '/';
     }
     return '/api/v1/activities/';
+  },
+
+  gearList: function() {
+    return this.get('gear');
   }
 });
 

@@ -1,18 +1,26 @@
-<a class="back-button" href="#gear">
+<a class="back-button" href="#mileage">
   <i class="fa fa-angle-double-left"></i>
   <span>Back</span>
 </a>
 <div class="headline">
-  <h2>New Gear</h2>
+  <h2>Add Gear</h2>
 </div>
 <form class="create edit gear-create-edit" rv-on-submit="controller>submit">
   <fieldset>
+
     <label for="name" class="control-label">Gear Name:</label>
-    <input name="name" type="text" rv-value="gearItem.name" />
+    <div class="fieldError" rv-error="gearItem*name"></div>
+    <input name="name" type="text" rv-errorclass="gearItem*name" rv-value="gearItem.name" />
+
     <label for="untracked_mileage" class="control-label">Untracked Mileage:</label>
-    <input name="untracked_mileage" type="text" rv-value="gearItem.untracked_mileage">
+    <div class="fieldError" rv-error="gearItem*untracked_mileage"></div>
+    <input name="untracked_mileage" type="text" rv-errorclass="gearItem*untracked_mileage" rv-value="gearItem.untracked_mileage">
+
     <label for="lifetime" class="control-label">Lifetime:</label>
-    <input name="lifetime" type="text" rv-value="gearItem.lifetime">
-    <button type="submit">Save</button>
+    <div class="fieldError" rv-error="gearItem*lifetime"></div>
+    <input name="lifetime" type="text" rv-errorclass="gearItem*lifetime" rv-value="gearItem.lifetime">
+
+    <button type="submit" class="simple-button">Save</button>
+
   </fieldset>
 </form>

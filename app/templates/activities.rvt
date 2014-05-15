@@ -3,12 +3,11 @@
 </button>
 <div class="activities-view">
   <ul class="activities-list" >
-    <li rv-each-activity="activities">
-      <div class="dash">
+      <li class="dash" rv-each-activity="activities">
         <h3 rv-text="activity.name"></h3>
         <div class="edit-widgets">
           <a class="add-gear" rv-href="activity.id" route="#activities/:activityId/addgear">
-            <i class="fa fa-plus"></i>
+            <i class="fa fa-plus"></i> Add Gear
           </a>
         </div>
         <div class="clearboth"></div>
@@ -31,7 +30,6 @@
             <i class="fa fa-flag-checkered"></i>
             <h4>Distance</h4>
             <span rv-text="activity.distance | miles"></span>
-            <div class="clearboth"></div>
           </div>
           <div class="elevation-gain">
             <i class="fa fa-arrow-circle-up"></i>
@@ -39,23 +37,24 @@
             <span>
               <span rv-text="activity.total_elevation_gain | feet"></span>
             </span>
-            <div class="clearboth"></div>
           </div>
           <div class="max-speed">
             <i class="fa fa-fighter-jet"></i>
             <h4>Max Speed</h4>
             <span rv-text="activity.max_speed | milesPerHour"></span>
-            <div class="clearboth"></div>
           </div>
           <div class="average-speed">
             <i class="fa fa-tachometer"></i>
             <h4>Average Speed</h4>
             <span rv-text="activity.average_speed | milesPerHour"></span>
-            <div class="clearboth"></div>
           </div>
         </div>
-      </div>
+        <div class="gear-sub-list">
+          <h4>Gear used during this ride:</h4>
+          <ul class="gear">
+            <li rv-gearformat="gear" rv-each-gear="activity.gear"></li>
+          </ul>
+        </div>
     </li>
-    <div class="clearboth"></div>
   </ul>
 </div>

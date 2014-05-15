@@ -32,11 +32,23 @@ dotAdapter.subscribe = function(object, keypath, callback) {
     });
     return;
   }
-  console.log(keypath + ' . subscribe no-op');
 };
 
 dotAdapter.unsubscribe = function(object, keypath, callback) {
+  if(keypath && object[keypath] instanceof Backbone.Collection) {
+    object[keypath].off('add remove');
+    return;
+  }
 
+  if(keypath && object[keypath] instanceof Backbone.Model) {
+    object[keypath].off('add remove change model');
+    return;
+  }
+
+  if(object.on) {
+    object.off('change:' + keypath);
+    return;
+  }
 };
 
 dotAdapter.read = function(object, keypath) {
@@ -69,9 +81,7 @@ rivets.adapters['>'] = {};
 
 var funcAdapter = rivets.adapters['>'];
 
-funcAdapter.subscribe = function(object, keypath, callback) {
-  console.log(keypath + ' > subscribe no-op');
-};
+funcAdapter.subscribe = function(object, keypath, callback) {};
 
 funcAdapter.read = function(object, keypath) {
   // Because > is used for function calls, we must bind the call to the object
@@ -84,4 +94,24 @@ funcAdapter.publish = function(object, keypath, value) {
 
 funcAdapter.unsubscribe = function(object, keypath, callback) {
 
+};
+
+rivets.adapters['*'] = {};
+
+var errorAdapter = rivets.adapters['*'];
+
+errorAdapter.subscribe = function(object, keypath, callback) {
+  object.on('change', callback);
+};
+
+errorAdapter.read = function(object, keypath) {
+  var errors = object.get('errors');
+
+  if(errors) {
+    return errors[keypath];
+  }
+};
+
+funcAdapter.unsubscribe = function(object, keypath, callback) {
+  object.unset(keypath);
 };

@@ -7,15 +7,15 @@
       </a>
     </li>
     <li>
-      <a href="#profile" class="profile">
-        <i class="fa fa-user"></i>
-        <span>Profile</span>
-      </a>
-    </li>
-    <li>
       <a href="#activities" class="activities">
         <svg rv-contents="activitiesIcon"></i>
         <span>Activities</span>
+      </a>
+    </li>
+    <li>
+      <a href="#profile" class="profile">
+        <i class="fa fa-user"></i>
+        <span>Profile</span>
       </a>
     </li>
     <li>

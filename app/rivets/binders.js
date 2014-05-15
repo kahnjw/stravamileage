@@ -1,5 +1,8 @@
 'use strict';
 
+var $ = require('jquery');
+var _ = require('lodash');
+var gearCollection = require('../collections/gear-collection');
 var rivets = require('rivets');
 
 
@@ -18,4 +21,41 @@ rivets.binders.href = function (el, value) {
 
 rivets.binders.contents = function(el, value) {
   el.innerHTML = value;
+};
+
+rivets.binders.error = function(el, value) {
+  var $el = $(el);
+
+  if(value) {
+    el.innerHTML = value;
+    $el.addClass('open');
+    return;
+  }
+  el.innerHTML = '';
+  $el.removeClass('open');
+};
+
+rivets.binders.errorclass = function(el, value) {
+  var $el = $(el);
+
+  if(value) {
+    $el.addClass('inputError');
+    return;
+  }
+
+  $el.removeClass('inputError');
+};
+
+rivets.binders.optimum = function(el, value) {
+  var $el = $(el);
+
+  $el.attr('optimum', value);
+};
+
+rivets.binders.gearformat = function(el, value) {
+  _.each(gearCollection.models, function(model) {
+    if(model.get('url') === value) {
+      el.innerHTML = model.get('name');
+    }
+  });
 };

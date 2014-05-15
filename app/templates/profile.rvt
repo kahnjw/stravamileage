@@ -1,15 +1,15 @@
 <div class="profile-page">
   <img rv-src="profile.profile" class="picture">
   <div class="basic-info">
-    <h2>{profile.firstname} {profile.lastname}</h2><span>{profile.city}, {profile.state}</span>
-  </div>
-  <div class="controls">
-    <a href="#logout" class="logout">
+    <h1>{profile.firstname} {profile.lastname}</h1>
+    <div class="bio">
+      <span>{profile.city}, {profile.state}</span> | <span rv-text="profile.totalDistance | miles"></span> riden
+    </div>
+    <div class="controls">
+      <a href="#logout" class="logout">
       <i class="fa fa-sign-out"></i>
-      Logout
-    </a>
-  </div>
-  <div class="clearboth"></div>
-  <div class="activities">
+        Logout
+     </a>
+   </div>
   </div>
 </div>

@@ -7,3 +7,5 @@ compiled_tempaltes/*
 test-bundles/*
 
 /compiled_templates/
+
+/app/styles/css/app.css
