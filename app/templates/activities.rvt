@@ -3,8 +3,7 @@
 </button>
 <div class="activities-view">
   <ul class="activities-list" >
-    <li rv-each-activity="activities">
-      <div class="dash">
+      <li class="dash" rv-each-activity="activities">
         <h3 rv-text="activity.name"></h3>
         <div class="edit-widgets">
           <a class="add-gear" rv-href="activity.id" route="#activities/:activityId/addgear">
@@ -50,7 +49,12 @@
             <span rv-text="activity.average_speed | milesPerHour"></span>
           </div>
         </div>
-      </div>
+        <div class="gear-sub-list">
+          <h4>Gear used during this ride:</h4>
+          <ul class="gear">
+            <li rv-gearformat="gear" rv-each-gear="activity.gear"></li>
+          </ul>
+        </div>
     </li>
   </ul>
 </div>

@@ -13,9 +13,13 @@ rivets.formatters.miles = function(value) {
 };
 
 rivets.formatters.milesPerHour = function(value) {
-  return value + ' miles/hour';
+  return value.toFixedDown(1) + ' miles/hour';
 };
 
 rivets.formatters.feet = function(value) {
-  return value + ' feet';
+  return value.toFixedDown(1) + ' feet';
+};
+
+rivets.formatters.truncate = function(value) {
+  return value.toFixedDown(1);
 };

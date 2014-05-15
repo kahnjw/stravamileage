@@ -41,7 +41,7 @@ var CreateEditGear = Backbone.View.extend({
 
   saved: function(model, status, jqXHR) {
     this.gearCollection.add(model);
-    window.location.hash = '#gear';
+    window.location.hash = '#mileage';
   },
 
   error: function(promise, error, status) {

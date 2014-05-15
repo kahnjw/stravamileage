@@ -38,6 +38,29 @@
   }
 }
 
+.left {
+  width: 35%;
+  margin-left: 10%;
+  display: inline-block;
+}
+
+.right {
+  width: 35%;
+  margin-left: 10%;
+  display: inline-block;
+  background: #ccc;
+  &:hover {
+    background: #aaa;
+  }
+}
+
+.danger {
+  .red;
+  &:hover {
+    background: @dark-danger-red;
+  }
+}
+
 .spin {
   -webkit-animation-name: spin;
   -webkit-animation-duration: 1500ms;
@@ -69,6 +92,6 @@
   to { -webkit-transform: rotate(360deg); }
 }
 
-button:hover {
+button:hover, a:hover {
   cursor: pointer;
 }
