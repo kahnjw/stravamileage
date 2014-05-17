@@ -15,6 +15,7 @@ var Authenticate = Backbone.View.extend({
 
   clean: function() {
     this.$body.removeClass('authenticate');
+    this.$el.empty();
   }
 });
 

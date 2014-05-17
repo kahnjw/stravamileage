@@ -91,6 +91,8 @@ var AddGearToActivity = Backbone.View.extend({
     });
 
     this.rivet.unbind();
+    delete this.rivet;
+    this.$el.empty();
   }
 });
 

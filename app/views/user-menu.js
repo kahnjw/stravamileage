@@ -11,7 +11,7 @@ var UserMenu = Backbone.View.extend({
   render: function() {
     this.$el.html(this.template);
 
-    rivets.bind(this.$el, {
+    this.rivet = rivets.bind(this.$el, {
       activitiesIcon: activitiesIcon
     });
   },
@@ -19,6 +19,12 @@ var UserMenu = Backbone.View.extend({
   switchActive: function(menuName) {
     this.$el.find('.active').removeClass('active');
     this.$el.find('.' + menuName).addClass('active');
+  },
+
+  clean: function() {
+    this.rivet.unbind();
+    delete this.rivet;
+    this.$el.empty();
   }
 });
 

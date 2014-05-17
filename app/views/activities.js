@@ -49,6 +49,8 @@ var Activities = Backbone.View.extend({
 
   clean: function() {
     this.rivet.unbind();
+    delete this.rivet;
+    this.$el.empty();
   }
 });
 

@@ -8,6 +8,10 @@ var More = Backbone.View.extend({
 
   render: function() {
     this.$el.html(this.template);
+  },
+
+  clean: function() {
+    this.$el.empty();
   }
 });
 

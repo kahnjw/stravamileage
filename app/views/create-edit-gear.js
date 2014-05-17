@@ -19,7 +19,7 @@ var CreateEditGear = Backbone.View.extend({
   render: function() {
     this.$el.html(this.template);
 
-    rivets.bind(this.$el, {
+    this.rivet = rivets.bind(this.$el, {
       gearItem: this.gearModel,
       controller: this
     });
@@ -53,6 +53,12 @@ var CreateEditGear = Backbone.View.extend({
     this.gearModel.save()
       .success(_.bind(this.saved, this))
       .fail(_.bind(this.error, this));
+  },
+
+  clean: function() {
+    this.rivet.unbind();
+    delete this.rivet;
+    this.$el.empty();
   }
 });
 
