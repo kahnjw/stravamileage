@@ -104,10 +104,6 @@ var Router = Backbone.Router.extend({
   },
 
   setup: function(viewName, hideMenu) {
-    if(this.currentView && this.currentView.clean) {
-      this.currentView.clean();
-    }
-
     if(hideMenu) {
       this.page.hideMenu();
     } else {
@@ -118,6 +114,10 @@ var Router = Backbone.Router.extend({
     this[viewName].setElement('.back');
     this[viewName].render();
     this.page.swapFrontBack();
+
+    if(this.currentView && this.currentView.clean) {
+      this.currentView.clean();
+    }
 
     this.currentView = this[viewName];
   },
