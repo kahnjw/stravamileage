@@ -39,6 +39,10 @@ var SessionView = Backbone.View.extend({
     this.session.save()
       .success(_.bind(this.saved, this))
       .fail(_.bind(this.failed, this));
+  },
+
+  clean: function() {
+    this.$el.emtpy();
   }
 });
 

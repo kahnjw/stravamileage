@@ -11,8 +11,9 @@ var globalEvents = require('./global-events');
 var csrf = require('./helpers/csrf');
 var CreateEditGear = require('./views/create-edit-gear');
 var LoginView = require('./views/login');
-var AddGearView = require('./views/add-gear');
+var AddGearToActivityView = require('./views/add-gear-to-activity');
 var ActivitiesView = require('./views/activities');
+var DeleteGear = require('./views/delete-gear');
 
 var Router = Backbone.Router.extend({
   routes: {
@@ -21,6 +22,7 @@ var Router = Backbone.Router.extend({
     '(/)mileage(/)': 'mileage',
     '(/)profile(/)': 'profile',
     '(/)gear/:gearId/edit(/)': 'createEditGear',
+    '(/)gear/:gearId/delete(/)': 'deleteGear',
     '(/)activities/:activityId/addgear(/)': 'addGearToActivity',
     '(/)gear/create(/)': 'createEditGear',
     '(/)gear(/)': 'gear',
@@ -44,8 +46,9 @@ var Router = Backbone.Router.extend({
     this.gear = new Gear();
     this.createEditGear = new CreateEditGear();
     this.login = new LoginView();
-    this.addGear = new AddGearView();
+    this.addGearToActivityView = new AddGearToActivityView();
     this.activities = new ActivitiesView();
+    this.deleteGear = new DeleteGear();
 
     this.wireRoutingEvents();
 
@@ -80,9 +83,14 @@ var Router = Backbone.Router.extend({
     this.setup('gear');
   },
 
+  deleteGear: function(gearId) {
+    this.deleteGear.getGear(gearId);
+    this.setup('deleteGear');
+  },
+
   addGearToActivity: function(activityId) {
-    this.addGear.getActivity(activityId);
-    this.setup('addGear');
+    this.addGearToActivityView.getActivity(activityId);
+    this.setup('addGearToActivityView');
   },
 
   createEditGear: function(gearId) {
@@ -96,10 +104,6 @@ var Router = Backbone.Router.extend({
   },
 
   setup: function(viewName, hideMenu) {
-    if(this.currentView && this.currentView.clean) {
-      this.currentView.clean();
-    }
-
     if(hideMenu) {
       this.page.hideMenu();
     } else {
@@ -110,6 +114,10 @@ var Router = Backbone.Router.extend({
     this[viewName].setElement('.back');
     this[viewName].render();
     this.page.swapFrontBack();
+
+    if(this.currentView && this.currentView.clean) {
+      this.currentView.clean();
+    }
 
     this.currentView = this[viewName];
   },

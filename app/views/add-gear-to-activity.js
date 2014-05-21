@@ -9,7 +9,7 @@ var rivets = require('rivets');
 var _ = require('lodash');
 
 
-var AddGear = Backbone.View.extend({
+var AddGearToActivity = Backbone.View.extend({
   template: createEditGearTemplate,
 
   initialize: function() {
@@ -24,7 +24,7 @@ var AddGear = Backbone.View.extend({
     this.gearCollection.on('add', this.checkOverlap, this);
     this.$el.html(this.template);
 
-    rivets.bind(this.$el, {
+    this.rivet = rivets.bind(this.$el, {
       activity: this.activity,
       gear: gearCollection,
       controller: this
@@ -60,7 +60,7 @@ var AddGear = Backbone.View.extend({
   saved: function(model, status, jqXHR) {
     this.gearCollection.fetch();
 
-    window.location.hash = '#profile';
+    window.location.hash = '#activities';
   },
 
   error: function() {
@@ -89,7 +89,11 @@ var AddGear = Backbone.View.extend({
     _.each(this.gearCollection.models, function(gearItem) {
       gearItem.unset('added');
     });
+
+    this.rivet.unbind();
+    delete this.rivet;
+    this.$el.empty();
   }
 });
 
-module.exports = AddGear;
+module.exports = AddGearToActivity;

@@ -5,6 +5,7 @@ var profileTemplate = require('../templates/profile.rvt');
 var AccountModel = require('../models/account');
 var rivets = require('rivets');
 
+
 var Profile = Backbone.View.extend({
   template: profileTemplate,
 
@@ -16,10 +17,16 @@ var Profile = Backbone.View.extend({
   render: function() {
     this.$el.html(this.template);
 
-    rivets.bind(this.$el, {
+    this.rivet = rivets.bind(this.$el, {
       profile: this.account,
       controller: this
     });
+  },
+
+  clean: function() {
+    this.rivet.unbind();
+    delete this.rivet;
+    this.$el.empty();
   }
 });
 
