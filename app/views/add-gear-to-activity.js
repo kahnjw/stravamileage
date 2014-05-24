@@ -90,7 +90,6 @@ var AddGearToActivity = Backbone.View.extend({
       gearItem.unset('added');
     });
 
-    this.rivet.unbind();
     delete this.rivet;
     this.$el.empty();
   }
