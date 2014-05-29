@@ -4,6 +4,7 @@ var Backbone = require('backbone');
 var createEditGearTemplate = require('../templates/create-edit-gear.rvt');
 var gearCollection = require('../collections/gear-collection');
 var GearModel = require('../models/gear-model');
+var errorHandler = require('../helpers/error-handler');
 var rivets = require('rivets');
 var _ = require('lodash');
 
@@ -35,7 +36,8 @@ var CreateEditGear = Backbone.View.extend({
 
     if(!this.gearModel) {
       this.gearModel = new GearModel({id: gearId});
-      this.gearModel.fetch();
+      this.gearModel.fetch()
+        .fail(errorHandler);
     }
   },
 

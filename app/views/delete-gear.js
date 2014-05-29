@@ -5,6 +5,7 @@ var authenticateTemplate = require('../templates/confirm.rvt');
 var gearCollection = require('../collections/gear-collection');
 var GearModel = require('../models/gear-model');
 var rivets = require('rivets');
+var errorHandler = require('../helpers/error-handler');
 
 var DeleteGear = Backbone.View.extend({
   template: authenticateTemplate,
@@ -40,7 +41,8 @@ var DeleteGear = Backbone.View.extend({
 
     if(!this.gearItem) {
       this.gearItem = new GearModel({id: gearId});
-      this.gearItem.fetch();
+      this.gearItem.fetch()
+        .fail(errorHandler);
     }
   },
 

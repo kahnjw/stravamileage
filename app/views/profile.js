@@ -3,6 +3,7 @@
 var Backbone = require('backbone');
 var profileTemplate = require('../templates/profile.rvt');
 var AccountModel = require('../models/account');
+var errorHandler = require('../helpers/error-handler');
 var rivets = require('rivets');
 
 
@@ -11,7 +12,8 @@ var Profile = Backbone.View.extend({
 
   initialize: function() {
     this.account = new AccountModel();
-    this.account.fetch();
+    this.account.fetch()
+      .fail(errorHandler);
   },
 
   render: function() {

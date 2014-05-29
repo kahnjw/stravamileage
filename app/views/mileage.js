@@ -3,6 +3,7 @@
 var Backbone = require('backbone');
 var mileageTemplate = require('../templates/mileage.rvt');
 var gearCollection = require('../collections/gear-collection');
+var errorHandler = require('../helpers/error-handler');
 var rivets = require('rivets');
 
 var Mileage = Backbone.View.extend({
@@ -10,7 +11,8 @@ var Mileage = Backbone.View.extend({
 
   initialize: function() {
     this.gearCollection = gearCollection;
-    this.gearCollection.fetch();
+    this.gearCollection.fetch()
+      .fail(errorHandler);
   },
 
   render: function() {

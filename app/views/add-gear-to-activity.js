@@ -5,6 +5,7 @@ var createEditGearTemplate = require('../templates/add-gear.rvt');
 var gearCollection = require('../collections/gear-collection');
 var activitiesCollection = require('../collections/activities');
 var Activity = require('../models/activity');
+var errorHandler = require('../helpers/error-handler');
 var rivets = require('rivets');
 var _ = require('lodash');
 
@@ -16,8 +17,11 @@ var AddGearToActivity = Backbone.View.extend({
     this.activitiesCollection = activitiesCollection;
     this.gearCollection = gearCollection;
 
-    this.activitiesCollection.fetch();
-    this.gearCollection.fetch();
+    this.activitiesCollection.fetch()
+      .fail(errorHandler);
+
+    this.gearCollection.fetch()
+      .fail(errorHandler);
   },
 
   render: function() {
@@ -53,12 +57,14 @@ var AddGearToActivity = Backbone.View.extend({
 
     if(!this.activity) {
       this.activity = new Activity({id: activityId});
-      this.activity.fetch();
+      this.activity.fetch()
+        .fail(errorHandler);
     }
   },
 
   saved: function(model, status, jqXHR) {
-    this.gearCollection.fetch();
+    this.gearCollection.fetch()
+      .fail(errorHandler);
 
     window.location.hash = '#activities';
   },
