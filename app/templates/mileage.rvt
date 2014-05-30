@@ -20,7 +20,7 @@
         Shop: <span class="gear-shop" rv-text="mileage.shop"></span>
       </span>
     </div>
-    <meter class="chart" rv-high="milage.lifetime" rv-max="mileage.lifetime" rv-value="mileage.total_mileage">
+    <meter class="chart" rv-high="milage.lifetime" rv-max="mileage.lifetime" rv-mvalue="mileage.total_mileage">
     </meter>
 
     <a rv-href="mileage.id" route="#gear/:gearId/edit" class="edit">
