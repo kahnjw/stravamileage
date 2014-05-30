@@ -23,6 +23,11 @@ rivets.binders.contents = function(el, value) {
   el.innerHTML = value;
 };
 
+rivets.binders.value = function(el, value) {
+  var $el = $(el);
+  $el.attr('value', Math.ceil(value));
+};
+
 rivets.binders.error = function(el, value) {
   var $el = $(el);
 

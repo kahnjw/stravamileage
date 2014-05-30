@@ -5,6 +5,9 @@ var mileageTemplate = require('../templates/mileage.rvt');
 var gearCollection = require('../collections/gear-collection');
 var errorHandler = require('../helpers/error-handler');
 var rivets = require('rivets');
+var $ = require('jquery');
+
+require('../helpers/meter-shim');
 
 var Mileage = Backbone.View.extend({
   template: mileageTemplate,
@@ -13,6 +16,8 @@ var Mileage = Backbone.View.extend({
     this.gearCollection = gearCollection;
     this.gearCollection.fetch()
       .fail(errorHandler);
+
+    this.gearCollection.on('add', this.polyfillMeters);
   },
 
   render: function() {
@@ -22,6 +27,12 @@ var Mileage = Backbone.View.extend({
       mileages: this.gearCollection,
       controller: this
     });
+
+    this.polyfillMeters();
+  },
+
+  polyfillMeters: function() {
+    $('meter').meterShim();
   },
 
   clean: function() {
