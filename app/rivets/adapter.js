@@ -92,9 +92,7 @@ funcAdapter.publish = function(object, keypath, value) {
   object[keypath] = value;
 };
 
-funcAdapter.unsubscribe = function(object, keypath, callback) {
-
-};
+funcAdapter.unsubscribe = function(object, keypath, callback) {};
 
 rivets.adapters['*'] = {};
 
@@ -112,6 +110,3 @@ errorAdapter.read = function(object, keypath) {
   }
 };
 
-funcAdapter.unsubscribe = function(object, keypath, callback) {
-  object.unset(keypath);
-};
